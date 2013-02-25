@@ -1,0 +1,25 @@
+{
+  "name": "meteor-normalizer",
+  "description": "Converts a Meteor app into a \"standard\" Node.js application.",
+  "keywords": [
+    "meteor"
+  ],
+  "version": "0.0.1",
+  "author": "Brandon Cannaday <brandon@modulus.io>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/InconceivableDuck/meteor-normalizer"
+  },
+  "dependencies": {
+    "commander" : "1.1.x",
+    "async" : "0.2.x"
+  },
+  "main": "./lib/meteor-normalizer",
+  "bin" : {
+    "meteor-normalizer": "./bin/meteor-normalizer"
+  },
+  "preferGlobal" : true,
+  "engines": {
+    "node": ">= 0.8.0"
+  }
+}
