@@ -1,22 +1,25 @@
 {
-  "name": "meteor-normalizer",
+  "name": "demeteorizer",
   "description": "Converts a Meteor app into a \"standard\" Node.js application.",
   "keywords": [
     "meteor"
   ],
   "version": "0.0.1",
-  "author": "Brandon Cannaday <brandon@modulus.io>",
+  "author": "Modulus <support@modulus.io>",
+  "maintainers": [
+    "Brandon Cannaday <brandon@modulus.io>"
+  ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/InconceivableDuck/meteor-normalizer"
+    "url": "https://github.com/OnModulus/demeteorizer"
   },
   "dependencies": {
     "commander" : "1.1.x",
     "async" : "0.2.x"
   },
-  "main": "./lib/meteor-normalizer",
+  "main": "./lib/demeteorizer",
   "bin" : {
-    "meteor-normalizer": "./bin/meteor-normalizer"
+    "meteor-normalizer": "./bin/demeteorizer"
   },
   "preferGlobal" : true,
   "engines": {

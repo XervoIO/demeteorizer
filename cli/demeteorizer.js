@@ -1,10 +1,10 @@
 var program = require('commander'),
-    normalizer = require('../lib/meteor-normalizer'),
+    demeteorizer = require('../lib/demeteorizer'),
     path = require('path');
 
 program
   .version('0.0.1')
-  .option('-o, --output', 'Output folder for normalized application.')
+  .option('-o, --output', 'Output folder for converted application.')
   .parse(process.argv);
 
 var output = program.output;
@@ -17,11 +17,11 @@ if(!output) {
 console.log('Input: ' + input);
 console.log('Output: ' + output);
 
-normalizer.on('progress', function(msg) {
+demeteorizer.on('progress', function(msg) {
   console.log(msg);
 });
 
-normalizer.normalize(input, output, function(err) {
+demeteorizer.convert(input, output, function(err) {
   if(err) {
     console.log(err);
   }
