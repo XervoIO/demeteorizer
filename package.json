@@ -17,6 +17,9 @@
     "commander" : "1.1.x",
     "async" : "0.2.x"
   },
+  "devDependencies" : {
+    "mocha" : "1.8.x"
+  },
   "main": "./lib/demeteorizer",
   "bin" : {
     "meteor-normalizer": "./bin/demeteorizer"

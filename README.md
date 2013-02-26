@@ -47,9 +47,14 @@ Run the app:
 ## Full Example
 The follow steps will create a Meteor example app, convert it, and run it.
 
-    $ meteor create -example leaderboard
+    $ meteor create --example leaderboard
     $ demeteorizer
     $ cd ./.demeteorized
     $ npm install
     $ MONGO_URL=[your-url] PORT=8080 node main.js
+
+## Support
+Demeteorizer has been tested with the current Meteor example apps. If you find an app that doesn't
+convert correctly, throw an issue in Github -
+[https://github.com/onmodulus/demeteorizer/issues](https://github.com/onmodulus/demeteorizer/issues)
 
