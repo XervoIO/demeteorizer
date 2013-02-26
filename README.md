@@ -45,7 +45,7 @@ Run the app:
     $ node main.js
 
 ## Full Example
-The follow steps will create a Meteor example app, convert it, and run it.
+The following steps will create a Meteor example app, convert it, and run it.
 
     $ meteor create --example leaderboard
     $ demeteorizer
