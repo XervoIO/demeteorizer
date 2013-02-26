@@ -22,7 +22,7 @@
   },
   "main": "./lib/demeteorizer",
   "bin" : {
-    "meteor-normalizer": "./bin/demeteorizer"
+    "demeteorizer": "./bin/demeteorizer"
   },
   "preferGlobal" : true,
   "engines": {
