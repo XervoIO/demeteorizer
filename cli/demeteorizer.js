@@ -4,14 +4,25 @@ var program = require('commander'),
 
 program
   .version('0.0.1')
-  .option('-o, --output', 'Output folder for converted application.')
+  .option('-o, --output <path>', 'Output folder for converted application. Defaults to ./demeteorized')
+  .option('-nv, --node_version <version>', 'The required version of node. Defaults to 0.8.0')
   .parse(process.argv);
 
 var output = program.output;
+var node_version = program.node_version;
+
 var input = process.cwd();
 
 if(!output) {
-  output = path.join(process.cwd(), 'normalized');
+  output = path.join(process.cwd(), '.demeteorized');
+}
+
+if(!node_version) {
+  node_version = 'v0.8.0';
+}
+
+if(node_version.indexOf('v') !== 0) {
+  node_version = 'v' + node_version;
 }
 
 console.log('Input: ' + input);
@@ -21,8 +32,8 @@ demeteorizer.on('progress', function(msg) {
   console.log(msg);
 });
 
-demeteorizer.convert(input, output, function(err) {
+demeteorizer.convert(input, output, node_version, function(err) {
   if(err) {
-    console.log(err);
+    console.log('ERROR: ' + err);
   }
 });
