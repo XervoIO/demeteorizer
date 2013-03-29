@@ -5,7 +5,7 @@ var program = require('commander'),
 program
   .version('0.1.0')
   .option('-o, --output <path>', 'Output folder for converted application. Defaults to ./demeteorized')
-  .option('-nv, --node_version <version>', 'The required version of node. Defaults to 0.8.0')
+  .option('-nv, --node_version <version>', 'The required version of node. Defaults to 0.8.18')
   .parse(process.argv);
 
 var output = program.output;
