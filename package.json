@@ -4,10 +4,11 @@
   "keywords": [
     "meteor"
   ],
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "Modulus <support@modulus.io>",
   "maintainers": [
-    "Brandon Cannaday <brandon@modulus.io>"
+    "Brandon Cannaday <brandon@modulus.io>",
+    "Bret Fisher <me@bfish.us>"
   ],
   "repository": {
     "type": "git",
