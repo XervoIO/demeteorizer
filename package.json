@@ -7,6 +7,9 @@
   "version": "0.2.1",
   "author": "Modulus <support@modulus.io>",
   "maintainers": [
+    "Brandon Cannaday <brandon@modulus.io>"
+  ],
+  "contributors": [
     "Brandon Cannaday <brandon@modulus.io>",
     "Bret Fisher <me@bfish.us>"
   ],
