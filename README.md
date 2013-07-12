@@ -33,7 +33,7 @@ node version to 0.8.11.
 ## Running Resulting App
 Meteor apps make use of the following environment variables:
 
-    1. MONGO_URL='mongodb://user:password@host:port/databasename'
+    1. MONGO_URL='mongodb://user:password@host:port/databasename?autoReconnect=true'
     2. MAIL_URL='smtp://user:password@mailhost:port/' (optional)
     3. ROOT_URL='http://example.com' (optional)
     4. PORT=8080 (optional, defaults to 80)
