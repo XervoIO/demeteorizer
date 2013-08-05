@@ -1,3 +1,5 @@
+// To run: > cd test && mocha --timeout 60000 test.js
+
 var demeteorizer = require('../lib/demeteorizer'),
     path = require('path'),
     assert = require('assert');
