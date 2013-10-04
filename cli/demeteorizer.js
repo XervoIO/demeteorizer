@@ -3,7 +3,7 @@ var program = require('commander'),
     path = require('path');
 
 program
-  .version('0.2.8')
+  .version('0.2.9')
   .option('-o, --output <path>', 'Output folder for converted application. Defaults to ./.demeteorized')
   .option('-n, --node_version <version>', 'The required version of node. Defaults to 0.8.24')
   .parse(process.argv);
