@@ -15,7 +15,7 @@ a package.json file with all required dependencies and can be easily ported to y
     --version             print demeteorizer version and exit
     --output, -o          output directory for converted app. Defaults to ./.demeteorized.
     --node_version, -n    version of node to override minimum node version variable. Defaults to 0.8.24.
-    --version, -v         sets the Meteor version. Defaults to latest installed.
+    --release, -r         sets the Meteor version. Defaults to latest installed.
 
 ## Examples
 Convert the Meteor app in the current directory and output to ./.demeteorized
