@@ -3,7 +3,7 @@ var program = require('commander'),
     path = require('path');
 
 program
-  .version('0.3.0')
+  .version('0.3.1')
   .option('-o, --output <path>', 'Output folder for converted application. Defaults to ./.demeteorized')
   .option('-n, --node_version <version>', 'The required version of node. Defaults to 0.8.24')
   .option('-r, --release <version>', 'Sets the Meteor version. Defaults to latest installed.')
