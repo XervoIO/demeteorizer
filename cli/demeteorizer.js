@@ -20,7 +20,7 @@ if(!output) {
 }
 
 if(!node_version) {
-  node_version = 'v0.8.24';
+  node_version = 'v0.10.22';
 }
 
 if(node_version.indexOf('v') !== 0) {

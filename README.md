@@ -14,7 +14,7 @@ a package.json file with all required dependencies and can be easily ported to y
 
     --version             print demeteorizer version and exit
     --output, -o          output directory for converted app. Defaults to ./.demeteorized.
-    --node_version, -n    version of node to override minimum node version variable. Defaults to 0.8.24.
+    --node_version, -n    version of node to override minimum node version variable. Defaults to 0.10.22.
     --release, -r         sets the Meteor version. Defaults to latest installed.
 
 ## Examples
@@ -27,9 +27,9 @@ Convert the Meteor app in the current directory and output to ~/meteor-app/conve
     $ demeteorizer -o ~/meteor-app/converted
 
 Convert the Meteor app in the current directory, output to ~/meteor-app/converter, and set minimum
-node version to 0.8.11.
+node version to 0.8.26.
 
-    $ demeteorizer -o ~/meteor-app/converted -n v0.8.11
+    $ demeteorizer -o ~/meteor-app/converted -n v0.8.26
 
 ## Running Resulting App
 Meteor apps make use of the following environment variables:
