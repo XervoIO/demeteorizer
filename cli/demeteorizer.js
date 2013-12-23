@@ -7,11 +7,13 @@ program
   .option('-o, --output <path>', 'Output folder for converted application. Defaults to ./.demeteorized')
   .option('-n, --node_version <version>', 'The required version of node. Defaults to 0.8.24')
   .option('-r, --release <version>', 'Sets the Meteor version. Defaults to latest installed.')
+  .option('-t  --tarball', 'Creates a tarball instead of a directory containing the converted application')
   .parse(process.argv);
 
 var output = program.output;
 var node_version = program.node_version;
 var release = program.release;
+var tarball = program.tarball;
 
 var input = process.cwd();
 
@@ -37,7 +39,7 @@ demeteorizer.on('progress', function(msg) {
   console.log(msg);
 });
 
-demeteorizer.convert(input, output, node_version, release, function(err) {
+demeteorizer.convert(input, output, node_version, release, tarball, function(err) {
   if(err) {
     console.log('ERROR: ' + err);
   }
