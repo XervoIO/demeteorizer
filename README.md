@@ -26,7 +26,7 @@ Convert the Meteor app in the current directory and output to ~/meteor-app/conve
 
     $ demeteorizer -o ~/meteor-app/converted
 
-Convert the Meteor app in the current directory, output to ~/meteor-app/converter, and set minimum
+Convert the Meteor app in the current directory, output to ~/meteor-app/converted, and set minimum
 node version to 0.8.26.
 
     $ demeteorizer -o ~/meteor-app/converted -n v0.8.26
