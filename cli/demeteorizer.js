@@ -3,9 +3,9 @@ var program = require('commander'),
     path = require('path');
 
 program
-  .version('0.3.1')
+  .version(require('../package.json').version)
   .option('-o, --output <path>', 'Output folder for converted application. Defaults to ./.demeteorized')
-  .option('-n, --node_version <version>', 'The required version of node. Defaults to 0.8.24')
+  .option('-n, --node_version <version>', 'The required version of node [v0.10.22]', 'v0.10.22')
   .option('-r, --release <version>', 'Sets the Meteor version. Defaults to latest installed.')
   .parse(process.argv);
 
@@ -17,10 +17,6 @@ var input = process.cwd();
 
 if(!output) {
   output = path.join(process.cwd(), '.demeteorized');
-}
-
-if(!node_version) {
-  node_version = 'v0.10.22';
 }
 
 if(node_version.indexOf('v') !== 0) {
