@@ -12,11 +12,11 @@ a package.json file with all required dependencies and can be easily ported to y
     $ cd /path/to/meteor/app
     $ demeteorizer [options]
 
-    --version             print demeteorizer version and exit
+    --version             print demeteorizer version and exit.
     --output, -o          output directory for converted app. Defaults to ./.demeteorized.
     --node_version, -n    version of node to override minimum node version variable. Defaults to 0.10.22.
     --release, -r         sets the Meteor version. Defaults to latest installed.
-    --tarball, -t         creates a tarball instead of a directory as output
+    --tarball, -t         tarball path. If specified creates a tar.gz of demeteorized application instead of directory.
 
 ## Examples
 Convert the Meteor app in the current directory and output to ./.demeteorized
@@ -54,6 +54,12 @@ The following steps will create a Meteor example app, convert it, and run it.
     $ cd ./.demeteorized
     $ npm install
     $ MONGO_URL=[your-url] PORT=8080 node main.js
+
+## Tarball
+The --tarball option can be used to create a tar.gz of the application instead of putting the
+converted app in a directory.
+
+    $ demeteorizer --tarball /path/to/tarball.tar.gz
 
 ## Support
 Demeteorizer has been tested with the current Meteor example apps. If you find an app that doesn't
