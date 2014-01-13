@@ -4,10 +4,10 @@ var program = require('commander'),
 
 program
   .version(require('../package.json').version)
-  .option('-o, --output <path>', 'Output folder for converted application. Defaults to ./.demeteorized')
+  .option('-o, --output <path>', 'Output folder for converted application. Defaults to ./.demeteorized.')
   .option('-n, --node_version <version>', 'The required version of node [v0.10.22]', 'v0.10.22')
-  .option('-r, --release <version>', 'Sets the Meteor version. Defaults to latest installed.')
-  .option('-t  --tarball', 'Creates a tarball instead of a directory containing the converted application')
+  .option('-r, --release <version>', 'The Meteor version. Defaults to latest installed.')
+  .option('-t  --tarball <path>', 'Output tarball path. If specified, creates a tar.gz of demeteorized application instead of directory.')
   .parse(process.argv);
 
 var output = program.output;
