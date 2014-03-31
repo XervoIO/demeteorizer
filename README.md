@@ -22,6 +22,7 @@ which is especially important for compiled modules.
     --release, -r         sets the Meteor version. Defaults to latest installed.
     --tarball, -t         tarball path. If specified creates a tar.gz of demeteorized application instead of directory.
     --app_name, -a        value to put in the package.json name field. Defaults to the name of the current directory.
+    --prerelease, -p      ignore warnings written by Meteor to stderr when running bundle command.
 
 ## Examples
 Convert the Meteor app in the current directory and output to ./.demeteorized
