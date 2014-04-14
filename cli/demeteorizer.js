@@ -5,7 +5,7 @@ var program = require('commander'),
 program
   .version(require('../package.json').version)
   .option('-o, --output <path>', 'Output folder for converted application. Defaults to ./.demeteorized.')
-  .option('-n, --node_version <version>', 'The required version of node [v0.10.22].', 'v0.10.22')
+  .option('-n, --node_version <version>', 'The required version of node [v0.10.25].', 'v0.10.25')
   .option('-r, --release <version>', 'The Meteor version. Defaults to latest installed.')
   .option('-t, --tarball <path>', 'Output tarball path. If specified, creates a tar.gz of demeteorized application instead of directory.')
   .option('-a, --app_name <name>', 'Value to put in the package.json name field. Defaults to the current directory name.')
