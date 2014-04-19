@@ -18,7 +18,7 @@ which is especially important for compiled modules.
 
     --version             print demeteorizer version and exit.
     --output, -o          output directory for converted app. Defaults to ./.demeteorized.
-    --node_version, -n    version of node to override minimum node version variable. Defaults to 0.10.22.
+    --node_version, -n    version of node to override minimum node version variable. Defaults to 0.10.25.
     --release, -r         sets the Meteor version. Defaults to latest installed.
     --tarball, -t         tarball path. If specified creates a tar.gz of demeteorized application instead of directory.
     --app_name, -a        value to put in the package.json name field. Defaults to the name of the current directory.
