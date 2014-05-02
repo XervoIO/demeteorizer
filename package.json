@@ -4,7 +4,7 @@
   "keywords": [
     "meteor"
   ],
-  "version": "0.6.1",
+  "version": "0.7.0",
   "author": "Modulus <support@modulus.io>",
   "maintainers": [
     "Brandon Cannaday <brandon@modulus.io>"
@@ -20,18 +20,18 @@
     "url": "https://github.com/OnModulus/demeteorizer"
   },
   "dependencies": {
-    "commander" : "1.1.x",
-    "async" : "0.2.x",
+    "commander": "1.1.x",
+    "async": "0.2.x",
     "fs-tools": "0.2.x"
   },
-  "devDependencies" : {
-    "mocha" : "1.8.x"
+  "devDependencies": {
+    "mocha": "1.8.x"
   },
   "main": "./lib/demeteorizer",
-  "bin" : {
+  "bin": {
     "demeteorizer": "./bin/demeteorizer"
   },
-  "preferGlobal" : true,
+  "preferGlobal": true,
   "engines": {
     "node": ">= 0.8.0"
   }
