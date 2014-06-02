@@ -19,9 +19,11 @@ projects.forEach(function(project) {
   describe('Demeteorizer', function() {
     describe(project, function() {
       it('should convert without error', function(done) {
-        demeteorizer.convert(project, project + '_converted', 'v0.8.11', done);
+        demeteorizer.convert(project, project + '_converted', 'v0.8.11', null, null, null, false, false, done);
+      })
+      it('should convert without error (in debug mode)', function(done) {
+        demeteorizer.convert(project, project + '_debug_converted', 'v0.8.11', null, null, null, false, true, done);
       })
     })
   })
 });
-
