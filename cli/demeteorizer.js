@@ -10,6 +10,7 @@ program
   .option('-t, --tarball <path>', 'Output tarball path. If specified, creates a tar.gz of demeteorized application instead of directory.')
   .option('-a, --app_name <name>', 'Value to put in the package.json name field. Defaults to the current directory name.')
   .option('-p, --prerelease', 'Ignore Meteor prerelease warnings when running bundle.', false)
+  .option('-d, --debug', 'Bundle in debug mode (don\'t minify, etc)', false)
   .parse(process.argv);
 
 var output = program.output;
@@ -18,6 +19,7 @@ var release = program.release;
 var tarball = program.tarball;
 var appName = program.app_name;
 var prerelease = program.prerelease;
+var debug = program.debug;
 
 var input = process.cwd();
 
@@ -39,7 +41,7 @@ demeteorizer.on('progress', function(msg) {
   console.log(msg);
 });
 
-demeteorizer.convert(input, output, node_version, release, tarball, appName, prerelease, function(err) {
+demeteorizer.convert(input, output, node_version, release, tarball, appName, prerelease, debug, function(err) {
   if(err) {
     console.log('ERROR: ' + err);
   }
