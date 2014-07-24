@@ -26,7 +26,6 @@ which is especially important for compiled modules.
     -p, --prerelease              Ignore Meteor prerelease warnings when running bundle.
     -d, --debug                   Bundle in debug mode (don't minify, etc).
 
-
 ## Examples
 Convert the Meteor app in the current directory and output to ./.demeteorized
 
@@ -49,11 +48,15 @@ Meteor apps make use of the following environment variables:
     3. ROOT_URL='http://example.com' (optional)
     4. PORT=8080 (optional, defaults to 80)
 
+Note that demeteorized applications still require a MongoDB connection in order
+to correctly run. To run your demeteorized application locally, you will need
+MongoDB [installed](http://docs.mongodb.org/manual/installation/) and running.
+
 Run the app:
 
     $ cd /your/output/directory
     $ npm install
-    $ node main.js
+    $ MONGO_URL=mongodb://localhost:27017/test PORT=8080 node main
 
 ## Full Example
 The following steps will create a Meteor example app, convert it, and run it.
