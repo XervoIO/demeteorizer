@@ -79,3 +79,6 @@ Demeteorizer has been tested with the current Meteor example apps. If you find a
 convert correctly, throw an issue in Github -
 [https://github.com/onmodulus/demeteorizer/issues](https://github.com/onmodulus/demeteorizer/issues)
 
+## Release Hisotry
+* 2014/08/29 - v1.0.0 - Support for Meteor 0.9.x. Removed --node-version option. Output directory is now deleted if exists.
+
