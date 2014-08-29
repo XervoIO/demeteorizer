@@ -5,7 +5,6 @@ var program = require('commander'),
 program
   .version(require('../package.json').version)
   .option('-o, --output <path>', 'Output folder for converted application. Defaults to ./.demeteorized.')
-  .option('-n, --node_version <version>', 'The required version of node [v0.10.25].', 'v0.10.25')
   .option('-r, --release <version>', 'The Meteor version. Defaults to latest installed.')
   .option('-t, --tarball <path>', 'Output tarball path. If specified, creates a tar.gz of demeteorized application instead of directory.')
   .option('-a, --app_name <name>', 'Value to put in the package.json name field. Defaults to the current directory name.')
@@ -14,7 +13,6 @@ program
   .parse(process.argv);
 
 var output = program.output;
-var node_version = program.node_version;
 var release = program.release;
 var tarball = program.tarball;
 var appName = program.app_name;
@@ -27,10 +25,6 @@ if(!output) {
   output = path.join(process.cwd(), '.demeteorized');
 }
 
-if(node_version.indexOf('v') !== 0) {
-  node_version = 'v' + node_version;
-}
-
 console.log('Input: ' + input);
 console.log('Output: ' + output);
 if(release) {
@@ -41,11 +35,24 @@ demeteorizer.on('progress', function(msg) {
   console.log(msg);
 });
 
-demeteorizer.convert(input, output, node_version, release, tarball, appName, prerelease, debug, function(err) {
-  if(err) {
-    console.log('ERROR: ' + err);
+var options = {
+  input: input, 
+  output: output,
+  release: release,
+  tarball: tarball,
+  appName: appName,
+  prerelease: prerelease, 
+  debug: debug 
+};
+
+demeteorizer.convert(
+  options,
+  function(err) {
+    if(err) {
+      console.log('ERROR: ' + err);
+    }
+    else {
+      console.log('Demeteorization complete.');
+    }
   }
-  else {
-    console.log('Demeteorization complete.');
-  }
-});
+);

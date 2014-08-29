@@ -21,9 +21,10 @@
     "url": "https://github.com/OnModulus/demeteorizer"
   },
   "dependencies": {
-    "commander": "1.1.x",
-    "async": "0.2.x",
-    "fs-tools": "0.2.x"
+    "async": "0.2.10",
+    "commander": "1.1.1",
+    "fs-tools": "0.2.11",
+    "semver": "3.0.1"
   },
   "devDependencies": {
     "mocha": "1.8.x"

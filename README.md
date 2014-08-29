@@ -19,7 +19,6 @@ which is especially important for compiled modules.
     -h, --help                    output usage information
     -V, --version                 output the version number
     -o, --output <path>           Output folder for converted application. Defaults to ./.demeteorized.
-    -n, --node_version <version>  The required version of node [v0.10.25].
     -r, --release <version>       The Meteor version. Defaults to latest installed.
     -t, --tarball <path>          Output tarball path. If specified, creates a tar.gz of demeteorized application instead of directory.
     -a, --app_name <name>         Value to put in the package.json name field. Defaults to the current directory name.
