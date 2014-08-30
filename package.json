@@ -16,6 +16,7 @@
     "Matt Hernandez <matt@modulus.io>",
     "Tarang Patel <t@ran.gg>"
   ],
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/OnModulus/demeteorizer"
