@@ -36,7 +36,7 @@
   },
   "scripts": {
     "pretest": "jshint . --exclude node_modules",
-    "test": "mocha --require should --reporter spec test"
+    "test": "mocha --require should --reporter spec ./test"
   },
   "main": "./lib/demeteorizer",
   "bin": {
