@@ -85,8 +85,7 @@ an app that doesn't convert correctly, throw an issue in Github -
 [https://github.com/onmodulus/demeteorizer/issues](https://github.com/onmodulus/demeteorizer/issues)
 
 ## Release History
-* 2014/09/09 - v1.0.1 - Fixed a bug where the --prerelease and --debug flags were not properly read.
-* 2014/08/29 - v1.0.0 - Support for Meteor 0.9.x. Removed --node-version option. Output directory is now deleted if exists.
+See [releases](https://github.com/onmodulus/demeteorizer/releases).
 
 ## License
 
