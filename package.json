@@ -35,8 +35,8 @@
     "sinon": "1.10.3"
   },
   "scripts": {
-    "pretest": "jshint . --exclude node_modules",
-    "test": "mocha --require should --reporter spec"
+    "pretest": "jshint . --exclude-path .gitignore",
+    "test": "mocha"
   },
   "main": "./lib/demeteorizer",
   "bin": {

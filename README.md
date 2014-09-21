@@ -1,7 +1,7 @@
 Demeteorizer
 ============
 
-[![Build Status](https://travis-ci.org/onmodulus/demeteorizer.svg?branch=feature%2Ftests)](https://travis-ci.org/onmodulus/demeteorizer)
+[![NPM version](https://badge.fury.io/js/demeteorizer.svg)](http://badge.fury.io/js/demeteorizer) [![Build Status](https://travis-ci.org/onmodulus/demeteorizer.svg?branch=feature%2Ftests)](https://travis-ci.org/onmodulus/demeteorizer)
 
 CLI tool to convert a Meteor app into a "standard" Node.js application. The
 resulting app contains a package.json file with all required dependencies and
@@ -42,10 +42,10 @@ Convert the Meteor app in the current directory and output to
 ## Running Resulting App
 Meteor apps make use of the following environment variables:
 
-    1. MONGO_URL='mongodb://user:password@host:port/databasename?autoReconnect=true'
-    2. MAIL_URL='smtp://user:password@mailhost:port/' (optional)
-    3. ROOT_URL='http://example.com' (optional)
-    4. PORT=8080 (optional, defaults to 80)
+1. `MONGO_URL='mongodb://user:password@host:port/databasename?autoReconnect=true'`
+1. `MAIL_URL='smtp://user:password@mailhost:port/' (optional)`
+1. `ROOT_URL='http://example.com' (optional)`
+1. `PORT=8080 (optional, defaults to 80)`
 
 Note that demeteorized applications still require a MongoDB connection in order
 to correctly run. To run your demeteorized application locally, you will need

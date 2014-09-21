@@ -63,20 +63,19 @@ describe('demeteorizer', function () {
   });
 
   describe('#bundle', function () {
-    it('should execute with the correct options', function (done) {
-      context.options.output = '.demeteorized';
+    it('should execute with the correct options', function () {
+      context.options.output  = '.demeteorized';
       context.options.release = '0.9.x';
-      context.options.prerelease = true;
-      context.options.debug = true;
+      context.options.debug   = true;
 
-      cpStub.exec = function (cmd) {
-        cmd.should.equal(
-          'cd  && mrt bundle --debug --release 0.9.x --directory .demeteorized'
-        );
-        done();
-      };
+      cpStub.exec = sinon.spy();
 
-      demeteorizer.bundle(context, new Function());
+      demeteorizer.bundle(context, function () {
+        cpStub.exec
+          .calledWith('cd  && mrt bundle --debug --release 0.9.x --directory .demeteorized')
+          .should.be.true;
+      });
     });
   });
+
 });
