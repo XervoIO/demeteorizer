@@ -1,6 +1,6 @@
-var program = require('commander'),
-    demeteorizer = require('../lib/demeteorizer'),
-    path = require('path');
+var path         = require('path');
+var program      = require('commander');
+var demeteorizer = require('../lib/demeteorizer');
 
 program
   .version(require('../package.json').version)
@@ -12,47 +12,42 @@ program
   .option('-d, --debug', 'Bundle in debug mode (don\'t minify, etc).', false)
   .parse(process.argv);
 
-var output = program.output;
-var release = program.release;
-var tarball = program.tarball;
-var appName = program.app_name;
+var appName    = program.app_name;
+var debug      = program.debug;
+var input      = process.cwd();
+var output     = program.output;
 var prerelease = program.prerelease;
-var debug = program.debug;
+var release    = program.release;
+var tarball    = program.tarball;
 
-var input = process.cwd();
+output = output || path.join(process.cwd(), '.demeteorized');
 
-if(!output) {
-  output = path.join(process.cwd(), '.demeteorized');
+console.log('Input: ', input);
+console.log('Output:', output);
+
+if (release) {
+  console.log('Release:', release);
 }
 
-console.log('Input: ' + input);
-console.log('Output: ' + output);
-if(release) {
-  console.log('Release: ' + release);
-}
-
-demeteorizer.on('progress', function(msg) {
-  console.log(msg);
-});
+demeteorizer.on('progress', console.log.bind(console));
 
 var options = {
-  input: input, 
-  output: output,
-  release: release,
-  tarball: tarball,
-  appName: appName,
-  prerelease: prerelease, 
-  debug: debug 
+  appName    : appName,
+  debug      : debug,
+  input      : input,
+  output     : output,
+  prerelease : prerelease,
+  release    : release,
+  tarball    : tarball
 };
 
 demeteorizer.convert(
   options,
-  function(err) {
-    if(err) {
+  function (err) {
+    if (err) {
       console.log('ERROR: ' + err);
       process.exit(1);
-    }
-    else {
+    } else {
       console.log('Demeteorization complete.');
     }
   }

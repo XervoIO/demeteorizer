@@ -28,7 +28,15 @@
     "semver": "3.0.1"
   },
   "devDependencies": {
-    "mocha": "1.8.x"
+    "jshint": "2.5.5",
+    "mocha": "1.21.4",
+    "proxyquire": "1.0.1",
+    "should": "4.0.4",
+    "sinon": "1.10.3"
+  },
+  "scripts": {
+    "pretest": "jshint . --exclude-path .gitignore",
+    "test": "mocha"
   },
   "main": "./lib/demeteorizer",
   "bin": {
