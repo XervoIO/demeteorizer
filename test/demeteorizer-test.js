@@ -16,7 +16,6 @@ var context = { options: { input: '' } };
 describe('demeteorizer', function () {
 
   before(function () {
-    cpStub.exec = sinon.stub().yields(null, 'Meteor 0.9.9.2', '');
     fsStub.existsSync = sinon.stub().returns(true);
     fstStub.remove = sinon.stub();
   });
@@ -44,8 +43,22 @@ describe('demeteorizer', function () {
 
   describe('#getMeteorVersion', function () {
     it('should get the correct meteor version', function () {
+      cpStub.exec = sinon.stub().yields(null, 'Meteor 0.9.9.2', '');
+
       demeteorizer.getMeteorVersion(context, function () {
         context.meteorVersion.should.equal('0.9.x');
+      });
+    });
+
+    it('should return an error if meteor is not installed', function (done) {
+      cpStub.exec = sinon.stub().yields('command failed');
+
+      demeteorizer.getMeteorVersion(context, function (err) {
+        err.should.be.ok;
+        err.message.should.equal(
+          'Could not determine Meteor version. Make sure that Meteor is installed.'
+        );
+        done();
       });
     });
   });
