@@ -51,12 +51,24 @@ describe('demeteorizer', function () {
     });
 
     it('should return an error if meteor is not installed', function (done) {
-      cpStub.exec = sinon.stub().yields('command failed');
+      cpStub.exec = sinon.stub().yields(null, '');
 
       demeteorizer.getMeteorVersion(context, function (err) {
         err.should.be.ok;
         err.message.should.equal(
           'Could not determine Meteor version. Make sure that Meteor is installed.'
+        );
+        done();
+      });
+    });
+
+    it('should return an error if meteor exits with error code', function (done) {
+      cpStub.exec = sinon.stub().yields(new Error('Failed.'));
+
+      demeteorizer.getMeteorVersion(context, function (err) {
+        err.should.be.ok;
+        err.message.should.equal(
+          'Failed.'
         );
         done();
       });
