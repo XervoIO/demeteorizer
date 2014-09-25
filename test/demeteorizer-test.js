@@ -11,7 +11,7 @@ var demeteorizer = proxyquire('../lib/demeteorizer', {
   'fs-tools'      : fstStub
 });
 
-var context = { options: { input: '' } };
+var context = { options: { input: '', output: '.demeteorized' } };
 
 describe('demeteorizer', function () {
 
@@ -70,6 +70,21 @@ describe('demeteorizer', function () {
         err.message.should.equal(
           'Failed.'
         );
+        done();
+      });
+    });
+  });
+
+  describe('#createTarball', function () {
+    it('should execute the correct command', function (done) {
+      context.options.tarball = 'test.tar.gz';
+      cpStub.exec = sinon.stub().yields(null);
+
+      demeteorizer.createTarball(context, function () {
+        cpStub.exec
+          .calledWith('tar czPf test.tar.gz -C .demeteorized .')
+          .should.be.true;
+
         done();
       });
     });
