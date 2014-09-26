@@ -11,7 +11,7 @@ var demeteorizer = proxyquire('../lib/demeteorizer', {
   'fs-tools'      : fstStub
 });
 
-var context = { options: { input: '' } };
+var context = { options: { input: '', output: '.demeteorized' } };
 
 describe('demeteorizer', function () {
 
@@ -51,13 +51,40 @@ describe('demeteorizer', function () {
     });
 
     it('should return an error if meteor is not installed', function (done) {
-      cpStub.exec = sinon.stub().yields('command failed');
+      cpStub.exec = sinon.stub().yields(null, '');
 
       demeteorizer.getMeteorVersion(context, function (err) {
         err.should.be.ok;
         err.message.should.equal(
           'Could not determine Meteor version. Make sure that Meteor is installed.'
         );
+        done();
+      });
+    });
+
+    it('should return an error if meteor exits with error code', function (done) {
+      cpStub.exec = sinon.stub().yields(new Error('Failed.'));
+
+      demeteorizer.getMeteorVersion(context, function (err) {
+        err.should.be.ok;
+        err.message.should.equal(
+          'Failed.'
+        );
+        done();
+      });
+    });
+  });
+
+  describe('#createTarball', function () {
+    it('should execute the correct command', function (done) {
+      context.options.tarball = 'test.tar.gz';
+      cpStub.exec = sinon.stub().yields(null);
+
+      demeteorizer.createTarball(context, function () {
+        cpStub.exec
+          .calledWith('tar czPf test.tar.gz -C .demeteorized .')
+          .should.be.true;
+
         done();
       });
     });
