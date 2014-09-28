@@ -43,7 +43,17 @@ describe('demeteorizer', function () {
 
   describe('#getMeteorVersion', function () {
     it('should get the correct meteor version', function () {
-      cpStub.exec = sinon.stub().yields(null, 'Meteor 0.9.9.2', '');
+      cpStub.exec = sinon.stub().yields(null, 'Meteor 0.9.9.2\n', '');
+
+      demeteorizer.getMeteorVersion(context, function () {
+        context.meteorVersion.should.equal('0.9.x');
+      });
+    });
+
+    it('should get the correct meteor version when extra output is present', function () {
+      var out =
+        'loading observatory: apollo\nloading observatory: galileo\nMeteor 0.9.2.2\n';
+      cpStub.exec = sinon.stub().yields(null, out, '');
 
       demeteorizer.getMeteorVersion(context, function () {
         context.meteorVersion.should.equal('0.9.x');

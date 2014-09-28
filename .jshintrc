@@ -35,7 +35,7 @@
   "globalstrict"  : false,
   "iterator"      : false,
   "lastsemic"     : false,
-  "laxbreak"      : false,
+  "laxbreak"      : true,
   "laxcomma"      : true,
   "loopfunc"      : false,
   "multistr"      : false,
