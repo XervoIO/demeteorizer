@@ -28,6 +28,7 @@
     "semver": "3.0.1"
   },
   "devDependencies": {
+    "istanbul": "0.3.2",
     "jshint": "2.5.5",
     "mocha": "1.21.4",
     "proxyquire": "1.0.1",
@@ -35,8 +36,7 @@
     "sinon": "1.10.3"
   },
   "scripts": {
-    "pretest": "jshint . --exclude-path .gitignore",
-    "test": "mocha"
+    "test": "make test"
   },
   "main": "./lib/demeteorizer",
   "bin": {
