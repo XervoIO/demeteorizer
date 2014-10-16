@@ -28,6 +28,15 @@ compiled modules.
     -a, --app_name <name>         Value to put in the package.json name field. Defaults to the current directory name.
     -d, --debug                   Bundle in debug mode (don't minify, etc).
 
+## Meteor 0.8.1 and Below
+
+Meteor version 0.8.1 and below are only supported in Demeteorizer version
+v0.9.0 and Modulus CLI v1.1.0. For all other versions, use the latest version
+of Demeteorizer.
+
+This is because the `bundle` command changed in 0.9 which makes backward
+compatibility impossible. :(
+
 ## Examples
 Convert the Meteor app in the current directory and output to ./.demeteorized
 
