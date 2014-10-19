@@ -13,7 +13,7 @@ var demeteorizer = proxyquire('../lib/demeteorizer', {
 
 var context = { options: { input: '', output: '.demeteorized' } };
 
-describe('demeteorizer', function () {
+describe('demeteorizer lib', function () {
 
   before(function () {
     fsStub.existsSync = sinon.stub().returns(true);
@@ -125,6 +125,23 @@ describe('demeteorizer', function () {
           .calledWith('cd  && mrt bundle --debug --release 0.9.x --directory .demeteorized')
           .should.be.true;
       });
+    });
+  });
+
+  describe('#setupPaths', function () {
+    it('should correctly configure paths', function () {
+      var test = demeteorizer.setupPaths(context.options);
+
+      test.node_modules.should
+        .equal('.demeteorized/programs/server/node_modules');
+      test.old_node_modules.should
+        .equal('.demeteorized/server/node_modules');
+      test.old_server.should
+        .equal('.demeteorized/server/server.js');
+      test.package_json.should
+        .equal('.demeteorized/package.json');
+      test.server.should
+        .equal('.demeteorized/programs/server/boot.js');
     });
   });
 
