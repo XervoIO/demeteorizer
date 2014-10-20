@@ -4,3 +4,5 @@ node_js:
   - '0.10'
 before_install:
   - 'npm install npm@1.4.28 -g'
+notifications:
+  slack: modulus:IGiywvgFqBf4LiHlCImb3z5A
