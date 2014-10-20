@@ -1,5 +1,4 @@
 LIB_FILES  := $(shell find ./lib -name "*.js")
-CLI_FILES  := $(shell find ./cli -name "*.js")
 TEST_FILES := $(shell find ./spec -name "*.js")
 
 LINT_SRC = $(LIB_FILES) $(CLI_FILES) $(TEST_FILES)
