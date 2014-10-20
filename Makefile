@@ -1,7 +1,7 @@
 LIB_FILES  := $(shell find ./lib -name "*.js")
 TEST_FILES := $(shell find ./spec -name "*.js")
 
-LINT_SRC = $(LIB_FILES) $(CLI_FILES) $(TEST_FILES)
+LINT_SRC = $(LIB_FILES) $(TEST_FILES)
 
 test: $(LINT_SRC)
 	@node node_modules/.bin/jshint $^
