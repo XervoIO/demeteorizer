@@ -110,6 +110,11 @@ describe('demeteorizer lib', function () {
       context.meteorVersion = '0.8.x';
       demeteorizer.getBundleCommand(context).should.equal('mrt');
     });
+
+    it('should choose meteor bundle for invalid versions', function () {
+      context.meteorVersion = '1.0-rc.10';
+      demeteorizer.getBundleCommand(context).should.equal('meteor');
+    });
   });
 
   describe('#bundle', function () {
