@@ -51,8 +51,8 @@ Convert the Meteor app in the current directory and output to
 Meteor apps make use of the following environment variables:
 
 1. `MONGO_URL='mongodb://user:password@host:port/databasename?autoReconnect=true'`
+1. `ROOT_URL='http://example.com'`
 1. `MAIL_URL='smtp://user:password@mailhost:port/' (optional)`
-1. `ROOT_URL='http://example.com' (optional)`
 1. `PORT=8080 (optional, defaults to 80)`
 
 Note that demeteorized applications still require a MongoDB connection in order
@@ -63,7 +63,7 @@ Run the app:
 
     $ cd /your/output/directory
     $ npm install
-    $ MONGO_URL=mongodb://localhost:27017/test PORT=8080 node main
+    $ MONGO_URL=mongodb://localhost:27017/test PORT=8080 ROOT_URL=http://localhost:8080 node main
 
 ## Full Example
 The following steps will create a Meteor example app, convert it, and run it.
@@ -73,7 +73,7 @@ The following steps will create a Meteor example app, convert it, and run it.
     $ demeteorizer
     $ cd .demeteorized
     $ npm install
-    $ MONGO_URL=[your-url] PORT=8080 node main.js
+    $ MONGO_URL=[your-url] PORT=8080 ROOT_URL=http://localhost:8080 node main.js
 
 ## Tarball
 The --tarball option can be used to create a tar.gz of the application instead
