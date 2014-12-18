@@ -150,4 +150,18 @@ describe('demeteorizer lib', function () {
     });
   });
 
+  describe('#createPackageJSON', function () {
+    it('should create package.json with the correct fields', function () {
+      context.paths = {};
+      context.paths.package_json = './package.json';
+
+      fsStub.writeFileSync = function (path, data) {
+        path.should.equal('./package.json');
+        JSON.parse(data).engines.node.should.exist;
+      };
+
+      demeteorizer.createPackageJSON(context, new Function());
+    });
+  });
+
 });
