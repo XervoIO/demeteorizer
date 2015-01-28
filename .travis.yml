@@ -3,7 +3,7 @@ node_js:
   - '0.8'
   - '0.10'
 before_install:
-  - 'npm install npm@1.4.28 codeclimate -g'
+  - 'npm install npm@1.4.28 codeclimate-test-reporter -g'
 addons:
   code_climate:
     repo_token: c8ea2e0ac816cb09d3c8a2bdf92394f81908dcbe858ec70fd1bcbac2c8cfb030
