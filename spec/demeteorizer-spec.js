@@ -151,17 +151,47 @@ describe('demeteorizer lib', function () {
   });
 
   describe('#createPackageJSON', function () {
-    it('should create package.json with the correct fields', function () {
+    before(function () {
       context.paths = {};
       context.paths.package_json = './package.json';
+    });
+
+    it('should create package.json with the correct node version', function () {
+      fsStub.readFileSync =
+        sinon.stub().returns('var MIN_NODE_VERSION = \'v0.12.0\';');
 
       fsStub.writeFileSync = function (path, data) {
         path.should.equal('./package.json');
         JSON.parse(data).engines.node.should.exist;
+        JSON.parse(data).engines.node.should.equal('0.12.0');
+      };
+
+      demeteorizer.createPackageJSON(context, new Function());
+    });
+
+    it('should default the node version if version not found boot.js', function () {
+      fsStub.readFileSync =
+        sinon.stub().returns('');
+
+      fsStub.writeFileSync = function (path, data) {
+        path.should.equal('./package.json');
+        JSON.parse(data).engines.node.should.exist;
+        JSON.parse(data).engines.node.should.equal('0.10.33');
+      };
+
+      demeteorizer.createPackageJSON(context, new Function());
+    });
+
+    it('should default the node version if boot.js parse fails', function () {
+      fsStub.readFileSync = function () { throw new Error('ENOENT'); };
+
+      fsStub.writeFileSync = function (path, data) {
+        path.should.equal('./package.json');
+        JSON.parse(data).engines.node.should.exist;
+        JSON.parse(data).engines.node.should.equal('0.10.33');
       };
 
       demeteorizer.createPackageJSON(context, new Function());
     });
   });
-
 });
