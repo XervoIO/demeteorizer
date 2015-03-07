@@ -1,7 +1,7 @@
 Demeteorizer
 ============
 
-[![NPM version](https://badge.fury.io/js/demeteorizer.svg)](http://badge.fury.io/js/demeteorizer) [![Build Status](https://travis-ci.org/onmodulus/demeteorizer.svg?branch=feature%2Ftests)](https://travis-ci.org/onmodulus/demeteorizer)
+[![NPM version](https://badge.fury.io/js/demeteorizer.svg)](http://badge.fury.io/js/demeteorizer) [![Build Status](https://travis-ci.org/onmodulus/demeteorizer.svg?branch=master)](https://travis-ci.org/onmodulus/demeteorizer)
 
 CLI tool to convert a Meteor app into a "standard" Node.js application. The
 resulting app contains a package.json file with all required dependencies and
