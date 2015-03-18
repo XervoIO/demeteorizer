@@ -99,7 +99,7 @@ See [releases](https://github.com/onmodulus/demeteorizer/releases).
 
 The MIT License (MIT)
 
-Copyright (c) 2014 Modulus
+Copyright (c) 2015 Modulus
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
