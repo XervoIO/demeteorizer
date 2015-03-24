@@ -47,6 +47,7 @@ describe('demeteorizer lib', function () {
 
       demeteorizer.getMeteorVersion(context, function () {
         context.meteorVersion.should.equal('0.9.x');
+        context.isWindows.should.be.false;
       });
     });
 
@@ -57,6 +58,7 @@ describe('demeteorizer lib', function () {
 
       demeteorizer.getMeteorVersion(context, function () {
         context.meteorVersion.should.equal('0.9.x');
+        context.isWindows.should.be.false;
       });
     });
 
@@ -69,6 +71,24 @@ describe('demeteorizer lib', function () {
           'Could not determine Meteor version. Make sure that Meteor is installed.'
         );
         done();
+      });
+    });
+
+    it('should get the correct version for Windows preview', function () {
+      cpStub.exec = sinon.stub().yields(null, 'WINDOWS-PREVIEW@0.3.0');
+
+      demeteorizer.getMeteorVersion(context, function () {
+        context.meteorVersion.should.equal('0.3.x');
+        context.isWindows.should.be.true;
+      });
+    });
+
+    it('should windows boolean for Windows preview', function () {
+      cpStub.exec = sinon.stub().yields(null, 'WINDOWS-PREVIEW@0.3.0');
+
+      demeteorizer.getMeteorVersion(context, function () {
+        context.meteorVersion.should.equal('0.3.x');
+        context.isWindows.should.be.true;
       });
     });
 
@@ -103,16 +123,29 @@ describe('demeteorizer lib', function () {
   describe('#getBundleCommand', function () {
     it('should choose meteor bundle for 0.9.x', function () {
       context.meteorVersion = '0.9.x';
+      context.isWindows = false;
+
       demeteorizer.getBundleCommand(context).should.equal('meteor');
     });
 
     it('should choose mrt bundle for 0.8.x', function () {
       context.meteorVersion = '0.8.x';
+      context.isWindows = false;
+
       demeteorizer.getBundleCommand(context).should.equal('mrt');
     });
 
     it('should choose meteor bundle for invalid versions', function () {
       context.meteorVersion = '1.0-rc.10';
+      context.isWindows = false;
+
+      demeteorizer.getBundleCommand(context).should.equal('meteor');
+    });
+
+    it('should choose meteor bundle for windows preview', function () {
+      context.meteorVersion = '0.3.x';
+      context.isWindows = true;
+
       demeteorizer.getBundleCommand(context).should.equal('meteor');
     });
   });
