@@ -83,7 +83,7 @@ describe('demeteorizer lib', function () {
       });
     });
 
-    it('should windows boolean for Windows preview', function () {
+    it('should set windows boolean for Windows preview', function () {
       cpStub.exec = sinon.stub().yields(null, 'WINDOWS-PREVIEW@0.3.0');
 
       demeteorizer.getMeteorVersion(context, function () {
