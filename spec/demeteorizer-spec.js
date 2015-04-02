@@ -3,12 +3,11 @@ var sinon      = require('sinon');
 
 var cpStub  = {};
 var fsStub  = {};
-var fstStub = {};
 
 var demeteorizer = proxyquire('../lib/demeteorizer', {
   'child_process' : cpStub,
   'fs'            : fsStub,
-  'fs-tools'      : fstStub
+  'rimraf'        : sinon.stub()
 });
 
 var context = { options: { input: '', output: '.demeteorized' } };
@@ -17,7 +16,6 @@ describe('demeteorizer lib', function () {
 
   before(function () {
     fsStub.existsSync = sinon.stub().returns(true);
-    fstStub.remove = sinon.stub();
   });
 
   it('should exist', function () {
