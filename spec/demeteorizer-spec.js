@@ -37,6 +37,11 @@ describe('demeteorizer lib', function () {
       (demeteorizer.filterDep('test', undefined) === null)
         .should.be.true;
     });
+
+    it('should filter nw-pre-gyp-module-test', function () {
+      (demeteorizer.filterDep('nw-pre-gyp-module-test', '0.0.1') === null)
+        .should.be.true;
+    });
   });
 
   describe('#getMeteorVersion', function () {
