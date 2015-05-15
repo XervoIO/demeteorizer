@@ -42,6 +42,11 @@ describe('demeteorizer lib', function () {
       (demeteorizer.filterDep('nw-pre-gyp-module-test', '0.0.1') === null)
         .should.be.true;
     });
+
+    it('should filter forge-nodejs-example', function () {
+      (demeteorizer.filterDep('forge-nodejs-example', '0.0.1') === null)
+        .should.be.true;
+    });
   });
 
   describe('#getMeteorVersion', function () {
