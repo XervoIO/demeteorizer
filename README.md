@@ -28,6 +28,15 @@ compiled modules.
     -a, --app_name <name>         Value to put in the package.json name field. Defaults to the current directory name.
     -d, --debug                   Bundle in debug mode (don't minify, etc).
 
+## Windows Support
+
+Demeteorizer works on Windows; however, errors will occur when repeatedly
+running demeteorizer in Node.js versions
+[prior to 0.12.4](https://github.com/joyent/node/issues/3006).
+
+The workaround on earlier versions on Node.js is to delete to generated
+`.demeteorized` directory before rerunning demeteorizer.
+
 ## Meteor 0.8.1 and Below
 
 Meteor version 0.8.1 and below are only supported in Demeteorizer version
