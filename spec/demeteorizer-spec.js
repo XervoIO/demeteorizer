@@ -47,6 +47,13 @@ describe('demeteorizer lib', function () {
       (demeteorizer.filterDep('forge-nodejs-example', '0.0.1') === null)
         .should.be.true;
     });
+
+    it('should fix esprima version', function () {
+      var esprima = demeteorizer.filterDep('esprima', '0.0.1');
+
+      esprima.name.should.equal('esprima');
+      esprima.version.should.equal('~2.3.0');
+    });
   });
 
   describe('#getMeteorVersion', function () {
