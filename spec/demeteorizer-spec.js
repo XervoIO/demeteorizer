@@ -54,6 +54,21 @@ describe('demeteorizer lib', function () {
       esprima.name.should.equal('esprima');
       esprima.version.should.equal('~2.3.0');
     });
+
+    it('should ignore example, sample, and test packages', function () {
+      (demeteorizer.filterDep('node-quickbooks-example-app') === null)
+        .should.be.true;
+      (demeteorizer.filterDep('node-quickbooks-sample-app') === null)
+        .should.be.true;
+      (demeteorizer.filterDep('NODE-QUICKBOOKS-EXAMPLE-APP') === null)
+        .should.be.true;
+      (demeteorizer.filterDep('NODE-QUICKBOOKS-SAMPLE-APP') === null)
+        .should.be.true;
+      (demeteorizer.filterDep('node-quickbooks-test-app') === null)
+        .should.be.true;
+      (demeteorizer.filterDep('NODE-QUICKBOOKS-TEST-APP') === null)
+        .should.be.true;
+    });
   });
 
   describe('#getMeteorVersion', function () {
