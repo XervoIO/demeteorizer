@@ -62,6 +62,13 @@ describe('demeteorizer lib', function () {
       esprima.version.should.equal('0.x.x');
     });
 
+    it('should fix recast version', function () {
+      var esprima = demeteorizer.filterDep('recast', '0.4.12');
+
+      esprima.name.should.equal('recast');
+      esprima.version.should.equal('0.x.x');
+    });
+
     it('should ignore example, sample, and test packages', function () {
       (demeteorizer.filterDep('node-quickbooks-example-app') === null)
         .should.be.true;
