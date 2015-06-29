@@ -62,6 +62,13 @@ describe('demeteorizer lib', function () {
       esprima.version.should.equal('0.x.x');
     });
 
+    it('should fix evented version', function () {
+      var esprima = demeteorizer.filterDep('evented', '1.0.0');
+
+      esprima.name.should.equal('evented');
+      esprima.version.should.equal('0.1.0');
+    });
+
     it('should fix recast version', function () {
       var esprima = demeteorizer.filterDep('recast', '0.4.12');
 
