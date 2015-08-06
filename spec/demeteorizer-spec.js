@@ -56,24 +56,33 @@ describe('demeteorizer lib', function () {
     });
 
     it('should fix regenerator version', function () {
-      var esprima = demeteorizer.filterDep('regenerator', '0.4.12');
+      var regenerator = demeteorizer.filterDep('regenerator', '0.4.12');
 
-      esprima.name.should.equal('regenerator');
-      esprima.version.should.equal('0.x.x');
+      regenerator.name.should.equal('regenerator');
+      regenerator.version.should.equal('0.x.x');
     });
 
     it('should fix evented version', function () {
-      var esprima = demeteorizer.filterDep('evented', '1.0.0');
+      var evented = demeteorizer.filterDep('evented', '1.0.0');
 
-      esprima.name.should.equal('evented');
-      esprima.version.should.equal('0.1.0');
+      evented.name.should.equal('evented');
+      evented.version.should.equal('0.1.0');
     });
 
     it('should fix recast version', function () {
-      var esprima = demeteorizer.filterDep('recast', '0.4.12');
+      var recast = demeteorizer.filterDep('recast', '0.4.12');
 
-      esprima.name.should.equal('recast');
-      esprima.version.should.equal('0.x.x');
+      recast.name.should.equal('recast');
+      recast.version.should.equal('0.x.x');
+    });
+
+    it('should correct registry links', function () {
+      var stripe = demeteorizer.filterDep(
+        'stripe',
+        'https://registry.beneaththeink.com/stripe/-/stripe-3.0.3.tgz');
+
+      stripe.name.should.equal('stripe');
+      stripe.version.should.equal('https://registry.npmjs.com/stripe/-/stripe-3.0.3.tgz');
     });
 
     it('should ignore example, sample, and test packages', function () {
