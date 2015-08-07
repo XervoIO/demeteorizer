@@ -172,7 +172,7 @@ describe('demeteorizer lib', function () {
 
       demeteorizer.createTarball(context, function () {
         cpStub.exec
-          .calledWith('tar czPf test.tar.gz -C .demeteorized .')
+          .calledWith('tar czPf "test.tar.gz" -C ".demeteorized" .')
           .should.be.true;
 
         done();
