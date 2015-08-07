@@ -8,6 +8,6 @@ addons:
   code_climate:
     repo_token: c8ea2e0ac816cb09d3c8a2bdf92394f81908dcbe858ec70fd1bcbac2c8cfb030
 after_script:
-  - cat coverage/lcov.info | codeclimate
+  - cat coverage/lcov.info | codeclimate-test-reporter
 notifications:
   slack: modulus:IGiywvgFqBf4LiHlCImb3z5A
