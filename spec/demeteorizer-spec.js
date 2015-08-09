@@ -246,6 +246,7 @@ describe('demeteorizer lib', function () {
   describe('#createPackageJSON', function () {
     before(function () {
       context.paths = {};
+      context.json = {};
       context.paths.package_json = './package.json';
     });
 
@@ -263,8 +264,7 @@ describe('demeteorizer lib', function () {
     });
 
     it('should default the node version if version not found boot.js', function () {
-      fsStub.readFileSync =
-        sinon.stub().returns('');
+      fsStub.readFileSync = sinon.stub().returns('');
 
       fsStub.writeFileSync = function (path, data) {
         path.should.equal('./package.json');
@@ -282,6 +282,26 @@ describe('demeteorizer lib', function () {
         path.should.equal('./package.json');
         JSON.parse(data).engines.node.should.exist;
         JSON.parse(data).engines.node.should.equal('0.10.33');
+      };
+
+      demeteorizer.createPackageJSON(context, new Function());
+    });
+
+    it('should include arbitrary JSON data', function () {
+      context.json = {
+        test: true,
+        inner: { deep: true },
+        engines: { node: '0.12.x' }
+      };
+
+      fsStub.readFileSync = sinon.stub().returns('');
+
+      fsStub.writeFileSync = function (path, data) {
+        path.should.equal('./package.json');
+        JSON.parse(data).engines.node.should.exist;
+        JSON.parse(data).engines.node.should.equal('0.12.x');
+        JSON.parse(data).test.should.be.true;
+        JSON.parse(data).inner.deep.should.be.true;
       };
 
       demeteorizer.createPackageJSON(context, new Function());

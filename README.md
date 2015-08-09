@@ -14,19 +14,25 @@ run `npm install` on the destination server, which is especially important for
 compiled modules.
 
 ## Installing
+
+Install Demeteorizer globally using npm
+
     $ npm install -g demeteorizer
 
 ## Usage
+
     $ cd /path/to/meteor/app
     $ demeteorizer [options]
 
-    -h, --help                    output usage information
-    -V, --version                 output the version number
-    -o, --output <path>           Output folder for converted application. Defaults to ./.demeteorized.
-    -r, --release <version>       The Meteor version. Defaults to latest installed.
-    -t, --tarball <path>          Output tarball path. If specified, creates a tar.gz of demeteorized application instead of directory.
-    -a, --app_name <name>         Value to put in the package.json name field. Defaults to the current directory name.
-    -d, --debug                   Bundle in debug mode (don't minify, etc).
+    -h, --help               output usage information
+    -V, --version            output the version number
+    -o, --output <path>      Output folder for converted application. Defaults to ./.demeteorized.
+    -r, --release <version>  The Meteor version. Defaults to latest installed.
+    -t, --tarball <path>     Output tarball path. If specified, creates a tar.gz of demeteorized application instead of directory.
+    -a, --app_name <name>    Value to put in the package.json name field. Defaults to the current directory name.
+    -j, --json <json>        JSON data to be merged into the generated package.json
+    -d, --debug              Bundle in debug mode (don't minify, etc).
+
 
 ## Windows Support
 
@@ -47,17 +53,19 @@ This is because the `bundle` command changed in 0.9 which makes backward
 compatibility impossible. :(
 
 ## Examples
-Convert the Meteor app in the current directory and output to ./.demeteorized
+
+Convert the Meteor app in the current directory and output to `./.demeteorized`
 
     $ demeteorizer
 
 Convert the Meteor app in the current directory and output to
-~/meteor-app/converted
+`~/meteor-app/converted`
 
     $ demeteorizer -o ~/meteor-app/converted
 
-## Running Resulting App
-Meteor apps make use of the following environment variables:
+## Running Resulting Application
+
+Meteor applications make use of the following environment variables:
 
 1. `MONGO_URL='mongodb://user:password@host:port/databasename?autoReconnect=true'`
 1. `ROOT_URL='http://example.com'`
@@ -75,6 +83,7 @@ Run the app:
     $ MONGO_URL=mongodb://localhost:27017/test PORT=8080 ROOT_URL=http://localhost:8080 node main
 
 ## Full Example
+
 The following steps will create a Meteor example app, convert it, and run it.
 
     $ meteor create --example leaderboard
@@ -84,19 +93,54 @@ The following steps will create a Meteor example app, convert it, and run it.
     $ npm install
     $ MONGO_URL=[your-url] PORT=8080 ROOT_URL=http://localhost:8080 node main.js
 
+## Modifying the Generated package.json
+
+The `--json` option will allow you to pass arbitrary JSON data that will be
+added to the generated package.json. You can use this to override settings in
+package.json or to add arbitrary data.
+
+_settings.json_
+
+    {
+      "settings": {
+        "key": "some-key-data",
+        "services": {
+          "some-service": {
+            "key": "another-key"
+          }
+        }
+      }
+    }
+
+Add settings.json data to the generated package.json
+
+    $ demeteorizer --json "$(cat settings.json)"
+
+The resulting package.json will have a `settings` property that includes the
+JSON from settings.json.
+
+You can also use this to override settings
+
+    $ demeteorizer --json "{ \"engines\": { \"node\": \"0.12.x\" } }"
+
+This will result in a package.json with the node engine set to 0.12.x.
+
 ## Tarball
+
 The --tarball option can be used to create a tar.gz of the application instead
 of putting the converted app in a directory.
 
     $ demeteorizer --tarball /path/to/tarball.tar.gz
 
 ## Debug
+
 The --debug option is passed to the meteor bundle command indicating to meteor
 that the application should not be minified.
 
     $ demeteorizer --debug
 
 ## Support
+
 Demeteorizer has been tested with the current Meteor example apps. If you find
 an app that doesn't convert correctly, throw an issue in Github -
 [https://github.com/onmodulus/demeteorizer/issues](https://github.com/onmodulus/demeteorizer/issues)
