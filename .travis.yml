@@ -1,7 +1,7 @@
 language: node_js
 node_js:
-  - '0.8'
   - '0.10'
+  - '0.12'
 before_install:
   - 'npm install npm@1.4.28 -g && npm install codeclimate-test-reporter -g'
 addons:
