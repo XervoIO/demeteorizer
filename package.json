@@ -25,6 +25,7 @@
   "dependencies": {
     "async": "0.2.10",
     "commander": "1.1.1",
+    "hoek": "2.x.x",
     "rimraf": "2.3.2",
     "semver": "3.0.1"
   },
