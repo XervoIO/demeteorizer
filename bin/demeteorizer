@@ -21,23 +21,23 @@ Program
     'JSON data to be merged into the generated package.json')
   .parse(process.argv);
 
+console.log('Demeteorizing application...');
+
 Program.output = Program.output || Path.join(process.cwd(), '.demeteorized');
 
 try {
   Program.json = JSON.parse(Program.json);
 } catch(e) {
+  console.error('Failed to parse provided --json, defaulting to {}');
   Program.json = {};
 }
 
 var options = {
-  appName: Program.app_name,
   debug: Boolean(Program.debug),
   input: process.cwd(),
   directory: Program.output,
   json: Program.json
 };
-
-console.log('Demeteorizing application...');
 
 Demteorizer(options, function (err) {
   if (err) {
