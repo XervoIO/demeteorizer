@@ -39,8 +39,24 @@ describe('build', function () {
         '--server',
         'localhost',
         '--directory',
+        '.demeteorized'
+      ])).to.be.true();
+
+      done();
+    });
+
+    emitter.emit('close', 0);
+  });
+
+  it('overrides architecture when provided', function (done) {
+    Build({ architecture: 'os.linux.x86_64' }, function () {
+      expect(cpStub.spawn.calledWith('meteor', [
+        'build',
+        '--server',
+        'localhost',
+        '--directory',
         '.demeteorized',
-        '--architecture',
+        'architecture',
         'os.linux.x86_64'
       ])).to.be.true();
 
