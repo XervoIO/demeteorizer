@@ -18,10 +18,6 @@ Program
 
 Program.output = Program.output || Path.join(process.cwd(), '.demeteorized');
 
-if (Program.release) {
-  console.log('Release:', Program.release);
-}
-
 try {
   Program.json = JSON.parse(Program.json);
 } catch(e) {

@@ -1,3 +1,5 @@
+const Path = require('path');
+
 const Code = require('code');
 const Lab = require('lab');
 const Proxyquire = require('proxyquire');
@@ -51,6 +53,36 @@ describe('update-package', function () {
     it('creates a valid package.json', function (done) {
       UpdatePackage({ directory: '' }, function () {
         expect(fsStub.writeFile.called).to.be.true();
+        done();
+      });
+    });
+  });
+
+  describe('merges json from options into package.json', function () {
+    before(function (done) {
+      fsStub.existsSync = Sinon.stub().returns(true);
+      fsStub.readFileSync = Sinon.stub().returns('{}');
+      fsStub.unlinkSync = Sinon.stub();
+      fsStub.writeFile = Sinon.stub().yields(null);
+      done();
+    });
+
+    it('creates a valid package.json', function (done) {
+      UpdatePackage({ directory: '', json: { test: true } }, function () {
+        var path = Path.resolve('./bundle/programs/server/package.json');
+        var json = [
+          '{',
+          '  "engines": {',
+          '    "node": "0.10.33"',
+          '  },',
+          '  "main": "../../main.js",',
+          '  "scripts": {',
+          '    "start": "node ../../main"',
+          '  },',
+          '  "test": true',
+          '}'].join('\n');
+
+        expect(fsStub.writeFile.calledWith(path, json)).to.be.true();
         done();
       });
     });
