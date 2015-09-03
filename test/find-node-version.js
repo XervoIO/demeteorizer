@@ -1,5 +1,6 @@
-const Code = require('code');
 const Fs = require('fs');
+
+const Code = require('code');
 const Lab = require('lab');
 const Proxyquire = require('proxyquire');
 const Sinon = require('sinon');
