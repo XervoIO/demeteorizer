@@ -3,14 +3,19 @@
 const Path = require('path');
 const Program = require('commander');
 
-const Build = require('../lib/build');
-const UpdatePackage = require('../lib/update-package');
+const Demteorizer = require('../lib/demeteorizer');
 
 Program
   .version(require('../package.json').version)
   .option(
     '-o, --output <path>',
-    'Output folder for converted application. Defaults to ./.demeteorized.')
+    'Output folder for converted application [.demeteorized]')
+  .option(
+    '-a, --architecture <arch>',
+    'Build architecture to be generated')
+  .option(
+    '-d, --debug',
+    'Build the application in debug mode (don\'t minify, etc)')
   .option(
     '-j, --json <json>',
     'JSON data to be merged into the generated package.json')
@@ -26,28 +31,19 @@ try {
 
 var options = {
   appName: Program.app_name,
-  debug: Program.debug,
+  debug: Boolean(Program.debug),
   input: process.cwd(),
   directory: Program.output,
-  release: Program.release,
-  tarball: Program.tarball,
   json: Program.json
 };
 
-console.log('Demeteorizating application...');
+console.log('Demeteorizing application...');
 
-Build(options, function (err) {
+Demteorizer(options, function (err) {
   if (err) {
     console.error(err.message);
     return process.exit(1);
   }
 
-  UpdatePackage(options, function (err) {
-    if (err) {
-      console.error(err.message);
-      return process.exit(1);
-    }
-
-    console.log('Demeteorization complete.');
-  });
+  console.log('Demeteorization complete.');
 });

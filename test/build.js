@@ -56,8 +56,25 @@ describe('build', function () {
         'localhost',
         '--directory',
         '.demeteorized',
-        'architecture',
+        '--architecture',
         'os.linux.x86_64'
+      ])).to.be.true();
+
+      done();
+    });
+
+    emitter.emit('close', 0);
+  });
+
+  it('includes debug when provided', function (done) {
+    Build({ debug: true }, function () {
+      expect(cpStub.spawn.calledWith('meteor', [
+        'build',
+        '--server',
+        'localhost',
+        '--directory',
+        '.demeteorized',
+        '--debug'
       ])).to.be.true();
 
       done();
