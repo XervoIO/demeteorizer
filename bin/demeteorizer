@@ -52,14 +52,12 @@ var options = {
 
 Build(options, function (err) {
   if (err) {
-    console.error('Conversion failed.');
     console.error(err.message);
     return process.exit(1);
   }
 
   UpdatePackage(options, function (err) {
     if (err) {
-      console.error('Conversion failed.');
       console.error(err.message);
       return process.exit(1);
     }
