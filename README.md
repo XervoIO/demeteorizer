@@ -26,12 +26,8 @@ Install Demeteorizer globally using npm
 
     -h, --help               output usage information
     -V, --version            output the version number
-    -o, --output <path>      Output folder for converted application. Defaults to ./.demeteorized.
-    -r, --release <version>  The Meteor version. Defaults to latest installed.
-    -t, --tarball <path>     Output tarball path. If specified, creates a tar.gz of demeteorized application instead of directory.
-    -a, --app_name <name>    Value to put in the package.json name field. Defaults to the current directory name.
+    -o, --output <path>      Output folder for converted application. Defaults to .demeteorized.
     -j, --json <json>        JSON data to be merged into the generated package.json
-    -d, --debug              Bundle in debug mode (don't minify, etc).
 
 
 ## Windows Support
