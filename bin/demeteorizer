@@ -24,6 +24,7 @@ Program
 console.log('Demeteorizing application...');
 
 Program.output = Program.output || Path.join(process.cwd(), '.demeteorized');
+Program.json = Program.json || '{}';
 
 try {
   Program.json = JSON.parse(Program.json);

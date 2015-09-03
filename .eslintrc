@@ -49,7 +49,7 @@
   "rules": {
     "comma-dangle": [2, "never"],
     "no-cond-assign": 2,
-    "no-console": 0,
+    "no-console": 2,
     "no-constant-condition": 2,
     "no-control-regex": 2,
     "no-debugger": 2,
@@ -174,7 +174,7 @@
     "no-spaced-func": 0,
     "no-ternary": 0,
     "no-trailing-spaces": 0,
-    "no-underscore-dangle": 0,
+    "no-underscore-dangle": 2,
     "one-var": 0,
     "operator-assignment": 0,
     "operator-linebreak": 0,
