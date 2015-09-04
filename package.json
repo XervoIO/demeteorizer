@@ -23,17 +23,15 @@
     "url": "https://github.com/OnModulus/demeteorizer"
   },
   "dependencies": {
-    "async": "0.2.10",
-    "commander": "1.1.1",
+    "commander": "2.8.1",
     "hoek": "2.x.x",
-    "rimraf": "2.3.2",
-    "semver": "3.0.1"
+    "win-spawn": "2.0.0"
   },
   "devDependencies": {
     "code": "1.x.x",
     "lab": "5.x.x",
-    "proxyquire": "1.0.1",
-    "sinon": "1.10.3"
+    "proxyquire": "1.7.1",
+    "sinon": "1.16.1"
   },
   "scripts": {
     "test": "lab --lint --coverage",
