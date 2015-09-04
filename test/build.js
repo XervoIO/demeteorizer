@@ -7,7 +7,7 @@ const Sinon = require('sinon');
 
 var cpStub = {};
 var Build = Proxyquire('../lib/build', {
-  'child_process': cpStub
+  './exec': cpStub
 });
 
 var lab = exports.lab = Lab.script();
