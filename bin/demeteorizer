@@ -1,3 +1,50 @@
 #!/usr/bin/env node
 
-require('../lib/cli');
+const Path = require('path');
+const Program = require('commander');
+
+const Demteorizer = require('../lib/demeteorizer');
+
+Program
+  .version(require('../package.json').version)
+  .option(
+    '-o, --output <path>',
+    'Output folder for converted application [.demeteorized]')
+  .option(
+    '-a, --architecture <arch>',
+    'Build architecture to be generated')
+  .option(
+    '-d, --debug',
+    'Build the application in debug mode (don\'t minify, etc)')
+  .option(
+    '-j, --json <json>',
+    'JSON data to be merged into the generated package.json')
+  .parse(process.argv);
+
+console.log('Demeteorizing application...');
+
+Program.output = Program.output || Path.join(process.cwd(), '.demeteorized');
+Program.json = Program.json || '{}';
+
+try {
+  Program.json = JSON.parse(Program.json);
+} catch(e) {
+  console.error('Failed to parse provided --json, defaulting to {}');
+  Program.json = {};
+}
+
+var options = {
+  debug: Boolean(Program.debug),
+  input: process.cwd(),
+  directory: Program.output,
+  json: Program.json
+};
+
+Demteorizer(options, function (err) {
+  if (err) {
+    console.error(err.message);
+    return process.exit(1);
+  }
+
+  console.log('Demeteorization complete.');
+});
