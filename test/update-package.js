@@ -45,7 +45,7 @@ describe('update-package', function () {
     before(function (done) {
       fsStub.existsSync = Sinon.stub().returns(true);
       fsStub.readFileSync = Sinon.stub().returns('{}');
-      fsStub.unlinkSync = Sinon.stub();
+      fsStub.chmodSync = Sinon.stub();
       fsStub.writeFile = Sinon.stub().yields(null);
       done();
     });
@@ -62,7 +62,7 @@ describe('update-package', function () {
     before(function (done) {
       fsStub.existsSync = Sinon.stub().returns(true);
       fsStub.readFileSync = Sinon.stub().returns('{}');
-      fsStub.unlinkSync = Sinon.stub();
+      fsStub.chmodSync = Sinon.stub();
       fsStub.writeFile = Sinon.stub().yields(null);
       done();
     });
