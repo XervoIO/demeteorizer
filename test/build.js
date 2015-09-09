@@ -14,7 +14,6 @@ var lab = exports.lab = Lab.script();
 
 var describe = lab.describe;
 var beforeEach = lab.beforeEach;
-var afterEach = lab.afterEach;
 var it = lab.it;
 var expect = Code.expect;
 
