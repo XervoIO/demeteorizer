@@ -37,7 +37,8 @@ var options = {
   debug: Boolean(Program.debug),
   input: process.cwd(),
   directory: Program.output,
-  json: Program.json
+  json: Program.json,
+  architecture: Program.architecture
 };
 
 Demteorizer(options, function (err) {
