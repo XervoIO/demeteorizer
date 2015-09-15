@@ -2,6 +2,7 @@ language: node_js
 node_js:
   - '0.10'
   - '0.12'
+  - '4'
 before_install:
   - 'npm install npm@1.4.28 -g && npm install codeclimate-test-reporter -g'
 addons:
@@ -10,4 +11,5 @@ addons:
 after_script:
   - 'npm run gen-coverage && cat coverage/lcov.info | codeclimate-test-reporter'
 notifications:
-  slack: modulus:IGiywvgFqBf4LiHlCImb3z5A
+  slack:
+    secure: PGdsKStC7uOM9LRZzXun/z5IQqhV39/agmi8Bpqa04NqcS6kdKkRrKyhPvw49MX9FspzqklUjJfhYQBJ5WEXUqUc7VFl4xT7TaKmujDMeH4w6DzpesV17iM4ydklpbxcw7VOjIPckXOI3FWQlXbSDmgrAk997VBDGzg3qSOYBQQ=
