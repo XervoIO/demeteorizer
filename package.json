@@ -37,7 +37,7 @@
     "eslint-config-modulus": "*"
   },
   "scripts": {
-    "test": "lab --lint --threshold 100",
+    "test": "lab --threshold 100",
     "gen-coverage": "lab --coverage --reporter lcov --output coverage/lcov.info"
   },
   "main": "./lib/demeteorizer",

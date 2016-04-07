@@ -17,6 +17,9 @@ Program
     '-d, --debug',
     'Build the application in debug mode (don\'t minify, etc)')
   .option(
+    '-w, --server-only',
+    'Only build the server platform (meteor 1.3 only)')
+  .option(
     '-j, --json <json>',
     'JSON data to be merged into the generated package.json')
   .parse(process.argv);
@@ -35,6 +38,7 @@ try {
 
 var options = {
   debug: Boolean(Program.debug),
+  serverOnly: Boolean(Program.serverOnly),
   input: process.cwd(),
   directory: Program.output,
   json: Program.json,

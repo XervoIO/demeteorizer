@@ -82,6 +82,23 @@ describe('build', function () {
     emitter.emit('close', 0);
   });
 
+  it('includes server only when provided', function (done) {
+    Build({ serverOnly: true }, function () {
+      expect(cpStub.spawn.calledWith('meteor', [
+        'build',
+        '--server',
+        'localhost',
+        '--directory',
+        '.demeteorized',
+        '--server-only'
+      ])).to.be.true();
+
+      done();
+    });
+
+    emitter.emit('close', 0);
+  });
+
   it('returns an error on failed exit', function (done) {
     Build({}, function (err) {
       expect(err.message).to.equal('Conversion failed.');
