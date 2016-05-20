@@ -2,8 +2,6 @@
     "extends": "modulus",
     "rules": {
         "no-sync": 0,
-        "no-undefined": 0,
-        "semi-spacing": 2,
-        "semi": 2
+        "no-undefined": 0
     }
 }
