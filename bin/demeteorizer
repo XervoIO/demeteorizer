@@ -22,6 +22,12 @@ Program
   .option(
     '-j, --json <json>',
     'JSON data to be merged into the generated package.json')
+  .option(
+    '--node-version <version>',
+    'Node version set in generated package.json')
+  .option(
+    '--npm-version <version>',
+    'NPM version set in generated package.json')
   .parse(process.argv);
 
 console.log('Demeteorizing application...');
@@ -42,7 +48,9 @@ var options = {
   input: process.cwd(),
   directory: Program.output,
   json: Program.json,
-  architecture: Program.architecture
+  architecture: Program.architecture,
+  npmVersion: Program.npmVersion,
+  nodeVersion: Program.nodeVersion
 };
 
 Demteorizer(options, function (err) {

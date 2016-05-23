@@ -59,6 +59,12 @@ describe('find-node-version', function () {
       done();
     });
 
+    it('finds node version from options.nodeVersion', function (done) {
+      expect(FindVersion({ directory: '', nodeVersion: '4.2.0' }))
+        .to.equal('4.2.0');
+      done();
+    });
+
     it('finds the node version from boot.js', function (done) {
       expect(FindVersion({ directory: '' })).to.equal('0.10.36');
       done();
