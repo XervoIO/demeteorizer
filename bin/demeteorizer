@@ -27,7 +27,7 @@ Program
     'Node version set in generated package.json')
   .option(
     '--npm-version <version>',
-    'NPM version set in generated package.json')
+    'npm version set in generated package.json (defaults to latest)')
   .parse(process.argv);
 
 console.log('Demeteorizing application...');

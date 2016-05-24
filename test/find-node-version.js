@@ -59,7 +59,7 @@ describe('find-node-version', function () {
       done();
     });
 
-    it('finds node version from options.nodeVersion', function (done) {
+    it('sets node version from --node-version', function (done) {
       expect(FindVersion({ directory: '', nodeVersion: '4.2.0' }))
         .to.equal('4.2.0');
       done();
