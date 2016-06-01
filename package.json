@@ -23,21 +23,22 @@
     "url": "https://github.com/OnModulus/demeteorizer"
   },
   "dependencies": {
-    "commander": "2.8.1",
-    "hoek": "2.x.x",
-    "win-spawn": "2.0.0"
+    "commander": "2.9.0",
+    "hoek": "4.x.x",
+    "cross-spawn": "3.0.1"
   },
   "devDependencies": {
-    "code": "1.x.x",
-    "lab": "5.x.x",
-    "proxyquire": "1.7.1",
-    "sinon": "1.16.1",
+    "code": "2.x.x",
+    "lab": "10.x.x",
+    "proxyquire": "1.7.9",
+    "sinon": "1.17.4",
     "eslint": "2.11.1",
-    "eslint-plugin-hapi": "1.2.0",
-    "eslint-config-modulus": "*"
+    "eslint-plugin-hapi": "4.0.0",
+    "eslint-plugin-promise": "1.1.0",
+    "eslint-config-modulus": "0.6.0"
   },
   "scripts": {
-    "test": "lab --threshold 100",
+    "test": "lab --threshold 100 --lint",
     "gen-coverage": "lab --coverage --reporter lcov --output coverage/lcov.info"
   },
   "main": "./lib/demeteorizer",
