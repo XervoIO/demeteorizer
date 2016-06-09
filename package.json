@@ -24,8 +24,9 @@
   },
   "dependencies": {
     "commander": "2.9.0",
+    "cross-spawn": "3.0.1",
     "hoek": "4.x.x",
-    "cross-spawn": "3.0.1"
+    "semver": "5.1.0"
   },
   "devDependencies": {
     "code": "2.x.x",

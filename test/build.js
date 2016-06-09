@@ -17,22 +17,22 @@ var beforeEach = lab.beforeEach;
 var it = lab.it;
 var expect = Code.expect;
 
-describe('build', function () {
+describe('build', () => {
   var emitter;
 
-  beforeEach(function (done) {
+  beforeEach((done) => {
     emitter = new EventEmitter();
     cpStub.spawn = Sinon.stub().returns(emitter);
     done();
   });
 
-  it('exports a function', function (done) {
+  it('exports a function', (done) => {
     expect(Build).to.be.a.function();
     done();
   });
 
-  it('defaults options', function (done) {
-    Build({}, function () {
+  it('defaults options', (done) => {
+    Build({}, () => {
       expect(cpStub.spawn.calledWith('meteor', [
         'build',
         '--server',
@@ -47,8 +47,8 @@ describe('build', function () {
     emitter.emit('close', 0);
   });
 
-  it('overrides architecture when provided', function (done) {
-    Build({ architecture: 'os.linux.x86_64' }, function () {
+  it('overrides architecture when provided', (done) => {
+    Build({ architecture: 'os.linux.x86_64' }, () => {
       expect(cpStub.spawn.calledWith('meteor', [
         'build',
         '--server',
@@ -65,8 +65,8 @@ describe('build', function () {
     emitter.emit('close', 0);
   });
 
-  it('includes debug when provided', function (done) {
-    Build({ debug: true }, function () {
+  it('includes debug when provided', (done) => {
+    Build({ debug: true }, () => {
       expect(cpStub.spawn.calledWith('meteor', [
         'build',
         '--server',
@@ -82,8 +82,8 @@ describe('build', function () {
     emitter.emit('close', 0);
   });
 
-  it('includes server only when provided', function (done) {
-    Build({ serverOnly: true }, function () {
+  it('includes server only when provided', (done) => {
+    Build({ serverOnly: true }, () => {
       expect(cpStub.spawn.calledWith('meteor', [
         'build',
         '--server',
@@ -99,8 +99,8 @@ describe('build', function () {
     emitter.emit('close', 0);
   });
 
-  it('returns an error on failed exit', function (done) {
-    Build({}, function (err) {
+  it('returns an error on failed exit', (done) => {
+    Build({}, (err) => {
       expect(err.message).to.equal('Conversion failed.');
 
       done();
@@ -109,8 +109,8 @@ describe('build', function () {
     emitter.emit('close', 1);
   });
 
-  it('returns an error when the command fails', function (done) {
-    Build({}, function (err) {
+  it('returns an error when the command fails', (done) => {
+    Build({}, (err) => {
       expect(err.message).to.equal('failed');
 
       done();

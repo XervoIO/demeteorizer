@@ -17,32 +17,32 @@ var before = lab.beforeEach;
 var it = lab.it;
 var expect = Code.expect;
 
-describe('update-package', function () {
-  describe('fails', function () {
-    before(function (done) {
+describe('update-package', () => {
+  describe('fails', () => {
+    before((done) => {
       fsStub.existsSync = Sinon.stub().returns(false);
       done();
     });
 
-    it('if no options object is provided', function (done) {
-      expect(function () {
+    it('if no options object is provided', (done) => {
+      expect(() => {
         UpdatePackage();
       }).to.throw();
 
       done();
     });
 
-    it('if output directory does not exist', function (done) {
-      expect(function () {
-        UpdatePackage({ directory: '' }, function () {});
+    it('if output directory does not exist', (done) => {
+      expect(() => {
+        UpdatePackage({ directory: '' }, () => {});
       }).to.throw();
 
       done();
     });
   });
 
-  describe('successfully', function () {
-    before(function (done) {
+  describe('successfully', () => {
+    before((done) => {
       fsStub.existsSync = Sinon.stub().returns(true);
       fsStub.readFileSync = Sinon.stub().returns('{}');
       fsStub.chmodSync = Sinon.stub();
@@ -50,16 +50,16 @@ describe('update-package', function () {
       done();
     });
 
-    it('creates a valid package.json', function (done) {
-      UpdatePackage({ directory: '' }, function () {
+    it('creates a valid package.json', (done) => {
+      UpdatePackage({ directory: '' }, () => {
         expect(fsStub.writeFile.called).to.be.true();
         done();
       });
     });
   });
 
-  describe('merges json from options into package.json', function () {
-    before(function (done) {
+  describe('merges json from options into package.json', () => {
+    before((done) => {
       fsStub.existsSync = Sinon.stub().returns(true);
       fsStub.readFileSync = Sinon.stub().returns('{}');
       fsStub.chmodSync = Sinon.stub();
@@ -67,8 +67,8 @@ describe('update-package', function () {
       done();
     });
 
-    it('creates a valid package.json', function (done) {
-      UpdatePackage({ directory: '', json: { test: true } }, function () {
+    it('creates a valid package.json', (done) => {
+      UpdatePackage({ directory: '', json: { test: true } }, () => {
         var path = Path.resolve('./bundle/programs/server/package.json');
         var json = [
           '{',
@@ -89,9 +89,9 @@ describe('update-package', function () {
     });
   });
 
-  describe('uses npm version specified from options', function () {
-    it('sets npm version using options.npmVersion', function (done) {
-      UpdatePackage({ directory: '', npmVersion: '3.9.0' }, function () {
+  describe('uses npm version specified from options', () => {
+    it('sets npm version using options.npmVersion', (done) => {
+      UpdatePackage({ directory: '', npmVersion: '3.9.0' }, () => {
         var path = Path.resolve('./bundle/programs/server/package.json');
         var json = [
           '{',
