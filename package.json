@@ -30,7 +30,7 @@
   "devDependencies": {
     "code": "2.x.x",
     "lab": "10.x.x",
-    "proxyquire": "1.7.9",
+    "proxyquire": "1.7.10",
     "sinon": "1.17.4",
     "eslint": "2.11.1",
     "eslint-plugin-hapi": "4.0.0",
