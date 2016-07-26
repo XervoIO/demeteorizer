@@ -31,7 +31,7 @@
     "code": "2.x.x",
     "lab": "10.x.x",
     "proxyquire": "1.7.10",
-    "sinon": "1.17.4",
+    "sinon": "1.17.5",
     "eslint": "2.11.1",
     "eslint-plugin-hapi": "4.0.0",
     "eslint-plugin-promise": "1.1.0",
