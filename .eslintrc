@@ -1,7 +1,0 @@
-{
-    "extends": "modulus",
-    "rules": {
-        "no-sync": 0,
-        "no-undefined": 0
-    }
-}
