@@ -6,7 +6,7 @@ const Proxyquire = require('proxyquire');
 const Sinon = require('sinon');
 
 const cpStub = {};
-const FsStub = { access: Sinon.stub(), constants: { F_OK: true } };
+const FsStub = { access: Sinon.stub(), F_OK: 0 };
 
 const Install = Proxyquire('../lib/install', {
   'fs': FsStub,
