@@ -32,13 +32,11 @@
     "lab": "10.x.x",
     "proxyquire": "1.7.10",
     "sinon": "1.17.5",
-    "eslint": "2.11.1",
-    "eslint-plugin-hapi": "4.0.0",
-    "eslint-plugin-promise": "1.1.0",
-    "eslint-config-modulus": "0.6.0"
+    "standard": "8.0.0"
   },
   "scripts": {
-    "test": "lab --threshold 100 --lint",
+    "pretest": "standard",
+    "test": "lab --threshold 100",
     "gen-coverage": "lab --coverage --reporter lcov --output coverage/lcov.info"
   },
   "main": "./lib/demeteorizer",
