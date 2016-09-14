@@ -5,7 +5,7 @@ const Proxyquire = require('proxyquire');
 const Sinon = require('sinon');
 
 const FsStub = { readdir: Sinon.stub(), copy: Sinon.stub() };
-const MoveDependencies = Proxyquire('../lib/move-dependencies', {
+const CopyDependencies = Proxyquire('../lib/copy-dependencies', {
   'fs-extra': FsStub
 });
 
@@ -32,7 +32,7 @@ describe('move-dependencies', function () {
   });
 
   it('exports a function', function (done) {
-    expect(MoveDependencies).to.be.a.function();
+    expect(CopyDependencies).to.be.a.function();
     done();
   });
 
@@ -44,7 +44,7 @@ describe('move-dependencies', function () {
       });
 
       it('exists early when directory does not exist', function (done) {
-        MoveDependencies(options, function (err) {
+        CopyDependencies(options, function (err) {
           expect(err).to.not.exist();
           expect(FsStub.copy.called).to.be.false();
           done();
@@ -59,7 +59,7 @@ describe('move-dependencies', function () {
       });
 
       it('returns error when reading node_modules directory', function (done) {
-        MoveDependencies(options, function (err) {
+        CopyDependencies(options, function (err) {
           expect(err.message).to.equal('fs error');
           expect(FsStub.copy.called).to.be.false();
           done();
@@ -80,7 +80,7 @@ describe('move-dependencies', function () {
           'bundle/programs/server/node_modules'
         );
 
-        MoveDependencies(options, function (err) {
+        CopyDependencies(options, function (err) {
           expect(err).to.not.exist();
           expect(FsStub.copy.calledWith(source, destination)).to.be.true();
           done();
