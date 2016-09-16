@@ -99,6 +99,23 @@ describe('build', function () {
     emitter.emit('close', 0)
   })
 
+  it('includes verbose when provided', function (done) {
+    Build({ verbose: true }, function () {
+      expect(cpStub.spawn.calledWith('meteor', [
+        'build',
+        '--server',
+        'localhost',
+        '--directory',
+        '.demeteorized',
+        '--verbose'
+      ])).to.be.true()
+
+      done()
+    })
+
+    emitter.emit('close', 0)
+  })
+
   it('returns an error on failed exit', function (done) {
     Build({}, function (err) {
       expect(err.message).to.equal('Conversion failed.')
