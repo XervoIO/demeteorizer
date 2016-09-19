@@ -31,7 +31,7 @@
     "code": "2.x.x",
     "lab": "11.0.1",
     "proxyquire": "1.7.10",
-    "sinon": "1.17.5",
+    "sinon": "1.17.6",
     "standard": "8.1.0"
   },
   "scripts": {
