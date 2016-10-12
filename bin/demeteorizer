@@ -23,6 +23,9 @@ Program
     '-j, --json <json>',
     'JSON data to be merged into the generated package.json')
   .option(
+    '-v, --verbose',
+    'Output extra build information')
+  .option(
     '--node-version <version>',
     'Node version set in generated package.json')
   .option(
@@ -49,6 +52,7 @@ var options = {
   directory: Program.output,
   json: Program.json,
   architecture: Program.architecture,
+  verbose: Boolean(Program.verbose),
   npmVersion: Program.npmVersion,
   nodeVersion: Program.nodeVersion
 };
