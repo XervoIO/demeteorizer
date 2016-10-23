@@ -24,15 +24,15 @@
   },
   "dependencies": {
     "commander": "2.9.0",
-    "cross-spawn": "3.0.1",
     "hoek": "4.x.x",
-    "semver": "5.1.0"
+    "semver": "5.1.0",
+    "cross-spawn": "4.0.2"
   },
   "devDependencies": {
     "code": "2.x.x",
     "lab": "11.0.1",
     "proxyquire": "1.7.10",
-    "sinon": "1.17.5",
+    "sinon": "1.17.6",
     "standard": "8.1.0"
   },
   "scripts": {
