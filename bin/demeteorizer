@@ -26,6 +26,9 @@ Program
     '-v, --verbose',
     'Output extra build information')
   .option(
+    '-s, --server',
+    'Remote DDP Server location [localhost:3000]')
+  .option(
     '--node-version <version>',
     'Node version set in generated package.json')
   .option(
@@ -53,6 +56,7 @@ var options = {
   json: Program.json,
   architecture: Program.architecture,
   verbose: Boolean(Program.verbose),
+  server: Program.server,
   npmVersion: Program.npmVersion,
   nodeVersion: Program.nodeVersion
 };
