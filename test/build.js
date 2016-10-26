@@ -36,7 +36,7 @@ describe('build', () => {
       expect(cpStub.spawn.calledWith('meteor', [
         'build',
         '--server',
-        'localhost',
+        'localhost:3000',
         '--directory',
         '.demeteorized'
       ])).to.be.true()
@@ -52,7 +52,7 @@ describe('build', () => {
       expect(cpStub.spawn.calledWith('meteor', [
         'build',
         '--server',
-        'localhost',
+        'localhost:3000',
         '--directory',
         '.demeteorized',
         '--architecture',
@@ -70,7 +70,7 @@ describe('build', () => {
       expect(cpStub.spawn.calledWith('meteor', [
         'build',
         '--server',
-        'localhost',
+        'localhost:3000',
         '--directory',
         '.demeteorized',
         '--debug'
@@ -87,7 +87,7 @@ describe('build', () => {
       expect(cpStub.spawn.calledWith('meteor', [
         'build',
         '--server',
-        'localhost',
+        'localhost:3000',
         '--directory',
         '.demeteorized',
         '--server-only'
@@ -99,15 +99,31 @@ describe('build', () => {
     emitter.emit('close', 0)
   })
 
-  it('includes verbose when provided', function (done) {
-    Build({ verbose: true }, function () {
+  it('includes verbose when provided', (done) => {
+    Build({ verbose: true }, () => {
       expect(cpStub.spawn.calledWith('meteor', [
         'build',
         '--server',
-        'localhost',
+        'localhost:3000',
         '--directory',
         '.demeteorized',
         '--verbose'
+      ])).to.be.true()
+
+      done()
+    })
+
+    emitter.emit('close', 0)
+  })
+
+  it('overrides server when provided', (done) => {
+    Build({ server: 'http://example.com' }, () => {
+      expect(cpStub.spawn.calledWith('meteor', [
+        'build',
+        '--server',
+        'http://example.com',
+        '--directory',
+        '.demeteorized'
       ])).to.be.true()
 
       done()
