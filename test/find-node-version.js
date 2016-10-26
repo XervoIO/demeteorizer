@@ -15,23 +15,23 @@ var before = lab.beforeEach
 var it = lab.it
 var expect = Code.expect
 
-describe('find-node-version', function () {
-  describe('initialization', function () {
-    it('fails if no options object is provided', function (done) {
-      expect(function () {
+describe('find-node-version', () => {
+  describe('initialization', () => {
+    it('fails if no options object is provided', (done) => {
+      expect(() => {
         FindVersion()
       }).to.throw()
 
       done()
     })
 
-    before(function (done) {
+    before((done) => {
       fsStub.existsSync = Sinon.stub().returns(false)
       done()
     })
 
-    it('fails if output directory does not exist', function (done) {
-      expect(function () {
+    it('fails if output directory does not exist', (done) => {
+      expect(() => {
         FindVersion({ directory: '' })
       }).to.throw()
 
@@ -39,8 +39,8 @@ describe('find-node-version', function () {
     })
   })
 
-  describe('successfully', function () {
-    before(function (done) {
+  describe('successfully', () => {
+    before((done) => {
       fsStub.existsSync = Sinon.stub().returns(true)
       fsStub.readFileSync = Sinon.stub().returns([
         'var Fiber = require("fibers");',
@@ -59,39 +59,39 @@ describe('find-node-version', function () {
       done()
     })
 
-    it('sets node version from --node-version', function (done) {
+    it('sets node version from --node-version', (done) => {
       expect(FindVersion({ directory: '', nodeVersion: '4.2.0' }))
         .to.equal('4.2.0')
       done()
     })
 
-    it('finds the node version from boot.js', function (done) {
+    it('finds the node version from boot.js', (done) => {
       expect(FindVersion({ directory: '' })).to.equal('0.10.36')
       done()
     })
   })
 
-  describe('unsuccessfully', function () {
-    before(function (done) {
+  describe('unsuccessfully', () => {
+    before((done) => {
       fsStub.existsSync = Sinon.stub().returns(true)
       fsStub.readFileSync = Sinon.stub().returns('')
       done()
     })
 
-    it('finds the node version from boot.js', function (done) {
+    it('finds the node version from boot.js', (done) => {
       expect(FindVersion({ directory: '' })).to.equal('0.10.33')
       done()
     })
   })
 
-  describe('throws trying to', function () {
-    before(function (done) {
+  describe('throws trying to', () => {
+    before((done) => {
       fsStub.existsSync = Sinon.stub().returns(true)
       fsStub.readFileSync = Sinon.stub().throws()
       done()
     })
 
-    it('find the node version from boot.js', function (done) {
+    it('find the node version from boot.js', (done) => {
       expect(FindVersion({ directory: '' })).to.equal('0.10.33')
       done()
     })

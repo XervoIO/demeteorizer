@@ -57,7 +57,7 @@ var options = {
   nodeVersion: Program.nodeVersion
 };
 
-Demteorizer(options, function (err) {
+Demteorizer(options, (err) => {
   if (err) {
     console.error(err instanceof Error ? err.message : err);
     return process.exit(1);
