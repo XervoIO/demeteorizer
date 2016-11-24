@@ -205,8 +205,9 @@ describe('update-package', () => {
     })
   })
 
-  describe('defaults to latest version of npm', () => {
-    it('sets npm version to latest', (done) => {
+  describe('uses bundle package.json for npm version', () => {
+    it('sets npm version to bundle engines npm version', (done) => {
+      var pkg = require(Path.resolve(options.input, 'package.json'))
       delete options.npmVersion
       UpdatePackage(options, () => {
         var path = Path.resolve('./bundle/programs/server/package.json')
@@ -214,7 +215,7 @@ describe('update-package', () => {
           '{',
           '  "engines": {',
           `    "node": "${options.nodeVersion}",`,
-          '    "npm": "latest"',
+          `    "npm": "${pkg.engines.npm}"`,
           '  },',
           '  "main": "../../main.js",',
           '  "scripts": {',
