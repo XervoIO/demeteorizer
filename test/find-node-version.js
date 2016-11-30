@@ -26,7 +26,6 @@ describe('find-node-version', () => {
   beforeEach((done) => {
     options = {
       directory: process.env.PWD,
-      nodeVersion: '4.2.0',
       input: process.env.PWD
     }
 
@@ -48,16 +47,16 @@ describe('find-node-version', () => {
     it('fails if no options object is provided', (done) => {
       expect(() => {
         FindVersion()
-      }).to.throw()
+      }).to.throw(Error, 'options is required')
 
       done()
     })
 
     it('fails if output directory does not exist', (done) => {
-      delete options.output
+      options.directory = Path.join(__dirname, 'does_not_exist')
       expect(() => {
         FindVersion(options)
-      }).to.throw()
+      }).to.throw(Error, 'Output directory not found')
 
       done()
     })
@@ -84,30 +83,21 @@ describe('find-node-version', () => {
       done()
     })
 
-    it('sets node version from --node-version', (done) => {
+    it('sets node version from options.nodeVersion', (done) => {
+      options.nodeVersion = '4.2.0'
       expect(FindVersion(options))
-        .to.equal('4.2.0')
+        .to.equal(options.nodeVersion)
       done()
     })
 
-    describe('setting node version from options.input package.json', () => {
-      var pkg
-
-      beforeEach((done) => {
-        pkg = require(Path.resolve(options.input, 'package.json'))
-        fsStub.readFileSync.onCall(0).returns(JSON.stringify(pkg))
-        done()
-      })
-
-      it('finds node version in engines block', (done) => {
-        delete options.nodeVersion
-        expect(FindVersion(options)).to.equal(pkg.engines.node)
-        done()
-      })
+    it('sets node version from options.input package.json', (done) => {
+      var pkg = require(Path.resolve(options.input, 'package.json'))
+      fsStub.readFileSync.onCall(0).returns(JSON.stringify(pkg))
+      expect(FindVersion(options)).to.equal(pkg.engines.node)
+      done()
     })
 
     it('finds the node version from boot.js', (done) => {
-      delete options.nodeVersion
       expect(FindVersion(options)).to.equal('0.10.36')
       done()
     })
@@ -122,7 +112,6 @@ describe('find-node-version', () => {
     })
 
     it('finds the node version from boot.js', (done) => {
-      delete options.nodeVersion
       expect(FindVersion(options)).to.equal('0.10.33')
       done()
     })
@@ -137,7 +126,6 @@ describe('find-node-version', () => {
     })
 
     it('find the node version from boot.js', (done) => {
-      delete options.nodeVersion
       expect(FindVersion(options)).to.equal('0.10.33')
       done()
     })
