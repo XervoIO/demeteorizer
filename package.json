@@ -33,7 +33,7 @@
     "code": "4.0.0",
     "lab": "11.2.1",
     "proxyquire": "1.7.10",
-    "sinon": "1.17.6",
+    "sinon": "1.17.7",
     "standard": "8.6.0"
   },
   "scripts": {
