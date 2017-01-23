@@ -23,9 +23,9 @@ describe('update-package', () => {
 
   beforeEach((done) => {
     options = {
-      directory: process.env.PWD,
+      directory: process.cwd(),
       nodeVersion: '4.2.0',
-      input: process.env.PWD,
+      input: process.cwd(),
       json: { test: true },
       npmVersion: '3.9.0'
     }
