@@ -19,8 +19,8 @@ describe('find-npm-version', () => {
 
   beforeEach((done) => {
     options = {
-      directory: process.env.PWD,
-      input: process.env.PWD
+      directory: process.cwd(),
+      input: process.cwd()
     }
 
     done()
