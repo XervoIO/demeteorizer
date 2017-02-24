@@ -87,7 +87,7 @@ Convert the Meteor app in the current directory and output to
 
 The following steps will create a Meteor example app, convert it, and run it.
 
-    $ meteor create --example leaderboard
+    $ git clone https://github.com/meteor/leaderboard
     $ cd leaderboard
     $ demeteorizer
     $ cd .demeteorized/bundle/programs/server
@@ -105,19 +105,17 @@ package.json or to add arbitrary data.
 _settings.json_
 
     {
-      "settings": {
-        "key": "some-key-data",
-        "services": {
-          "some-service": {
-            "key": "another-key"
-          }
+      "key": "some-key-data",
+      "services": {
+        "some-service": {
+          "key": "another-key"
         }
       }
     }
 
 Add settings.json data to the generated package.json
 
-    $ demeteorizer --json "$(cat settings.json)"
+    $ demeteorizer --json "{ \"settings\": $(cat settings.json) }"
 
 The resulting package.json will have a `settings` property that includes the
 JSON from settings.json.
