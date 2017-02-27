@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "commander": "2.9.0",
-    "cross-spawn": "5.0.1",
+    "cross-spawn": "5.1.0",
     "fs-extra": "2.0.0",
     "hoek": "4.x.x",
     "semver": "5.1.0"
